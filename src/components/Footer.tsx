@@ -1,4 +1,4 @@
-import { Shield } from "lucide-react";
+import logo from "@/assets/ayfa-logo.png";
 
 const Footer = () => {
   return (
@@ -6,9 +6,8 @@ const Footer = () => {
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-8 h-8 text-accent" />
-              <span className="text-xl font-bold">ayfa SEGUROS</span>
+            <div className="flex items-center mb-4">
+              <img src={logo} alt="Ayfa Seguros" className="h-12" />
             </div>
             <p className="text-white/80">
               Especialistas em seguros para eventos, garantindo proteção e tranquilidade.
