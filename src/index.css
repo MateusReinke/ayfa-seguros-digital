@@ -103,7 +103,11 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
+body {
     @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
