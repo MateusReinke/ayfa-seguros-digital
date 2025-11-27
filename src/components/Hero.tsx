@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Shield } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import logo from "@/assets/ayfa-logo.png";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -24,9 +24,8 @@ const Hero = () => {
       {/* Content */}
       <div className="container relative z-10 px-4 md:px-6 py-20">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-6 animate-fade-in">
-            <Shield className="w-12 h-12 text-accent" />
-            <h2 className="text-2xl md:text-3xl font-bold text-white">ayfa SEGUROS</h2>
+          <div className="flex items-center mb-6 animate-fade-in">
+            <img src={logo} alt="Ayfa Seguros" className="h-16 md:h-20" />
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in">

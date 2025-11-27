@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Shield } from "lucide-react";
+import { Menu } from "lucide-react";
+import logo from "@/assets/ayfa-logo.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,11 +39,8 @@ const Navigation = () => {
     >
       <div className="container px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection("hero")}>
-            <Shield className={`w-8 h-8 ${isScrolled ? "text-primary" : "text-accent"}`} />
-            <span className={`text-xl font-bold ${isScrolled ? "text-foreground" : "text-white"}`}>
-              ayfa SEGUROS
-            </span>
+          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
+            <img src={logo} alt="Ayfa Seguros" className="h-12 md:h-14" />
           </div>
 
           {/* Desktop Navigation */}
