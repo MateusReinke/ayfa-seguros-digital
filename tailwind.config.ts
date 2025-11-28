@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        display: ['Playfair Display', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -55,7 +56,15 @@ export default {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-accent': 'var(--gradient-accent)',
         'gradient-hero': 'var(--gradient-hero)',
-        sidebar: {
+        'gradient-soft': 'var(--gradient-soft)',
+        'gradient-card': 'var(--gradient-card)',
+      },
+      boxShadow: {
+        'elegant': 'var(--shadow-elegant)',
+        'glow': 'var(--shadow-glow)',
+        'card': 'var(--shadow-card)',
+      },
+      sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
           primary: "hsl(var(--sidebar-primary))",

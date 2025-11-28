@@ -1,7 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import eventsIcon from "@/assets/events-icon.jpg";
 import liabilityIcon from "@/assets/liability-icon.jpg";
 import personalIcon from "@/assets/personal-icon.jpg";
+import { CheckCircle2 } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -47,40 +48,31 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="py-20 bg-secondary">
+    <section id="servicos" className="py-24 lg:py-32 bg-gradient-soft">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Nossos Serviços
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Soluções completas em seguros para garantir o sucesso do seu evento
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Soluções completas em seguros para cada tipo de evento e necessidade
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card border-border"
-            >
-              <CardHeader>
-                <div className="w-20 h-20 mb-4 rounded-lg overflow-hidden">
-                  <img 
-                    src={service.icon} 
-                    alt={service.title} 
-                    className="w-full h-full object-cover"
-                  />
+            <Card key={index} className="overflow-hidden hover:shadow-elegant transition-all duration-500 border-0 bg-gradient-card group hover:-translate-y-2">
+              <CardContent className="p-8 lg:p-10">
+                <div className="w-24 h-24 mb-8 rounded-2xl overflow-hidden shadow-card group-hover:scale-110 transition-transform duration-500">
+                  <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
                 </div>
-                <CardTitle className="text-2xl text-foreground">{service.title}</CardTitle>
-                <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
+                <h3 className="font-display text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
+                <p className="text-muted-foreground mb-6 text-lg leading-relaxed">{service.description}</p>
+                <ul className="space-y-3">
                   {service.details.map((detail, idx) => (
                     <li key={idx} className="flex items-start">
-                      <span className="text-accent mr-2">•</span>
-                      <span className="text-foreground">{detail}</span>
+                      <CheckCircle2 className="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                      <span className="text-base text-foreground/90">{detail}</span>
                     </li>
                   ))}
                 </ul>
