@@ -42,29 +42,29 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-secondary">
+    <section id="faq" className="py-24 lg:py-32 bg-background">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Perguntas Frequentes
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Tire suas dúvidas sobre nossos serviços e coberturas
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="max-w-4xl mx-auto">
+          <Accordion type="single" collapsible className="space-y-6">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card border border-border rounded-lg px-6 hover:shadow-md transition-shadow"
+                className="bg-gradient-card border-0 rounded-2xl px-8 hover:shadow-card transition-all duration-300 shadow-sm"
               >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-accent hover:no-underline py-4">
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary hover:no-underline py-6 text-lg">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-4">
+                <AccordionContent className="text-foreground/70 pb-6 text-base leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

@@ -27,34 +27,34 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-24 lg:py-32 bg-gradient-soft">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             O Que Nossos Clientes Dizem
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Depoimentos de quem confia na Ayfa para proteger seus eventos
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="hover:shadow-xl transition-all duration-300 border-border bg-card relative"
+              className="hover:shadow-elegant transition-all duration-500 border-0 bg-gradient-card hover:-translate-y-2 group"
             >
-              <CardContent className="pt-6">
-                <div className="flex gap-1 mb-4">
+              <CardContent className="pt-10 pb-8 px-8">
+                <div className="flex gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+                    <Star key={i} className="w-6 h-6 fill-accent text-accent" />
                   ))}
                 </div>
-                <p className="text-muted-foreground mb-6 italic">"{testimonial.text}"</p>
-                <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  <p className="text-sm text-accent font-medium">{testimonial.company}</p>
+                <p className="text-foreground/80 mb-8 italic text-lg leading-relaxed">"{testimonial.text}"</p>
+                <div className="border-t border-border pt-6">
+                  <p className="font-bold text-foreground text-lg mb-1">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground mb-1">{testimonial.role}</p>
+                  <p className="text-sm text-accent font-semibold">{testimonial.company}</p>
                 </div>
               </CardContent>
             </Card>

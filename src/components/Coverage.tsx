@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { 
   CalendarOff, 
   Users, 
@@ -43,33 +43,30 @@ const Coverage = () => {
   ];
 
   return (
-    <section id="cobertura" className="py-20 bg-background">
+    <section id="cobertura" className="py-24 lg:py-32 bg-background">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Tipos de Cobertura
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Proteção abrangente para todos os tipos de eventos
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Coberturas completas para proteger cada aspecto do seu evento
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coverageTypes.map((item, index) => {
-            const Icon = item.icon;
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {coverageTypes.map((coverage, index) => {
+            const Icon = coverage.icon;
             return (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg transition-all duration-300 border-border bg-card group"
-              >
-                <CardHeader>
-                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-accent/20 transition-colors">
-                    <Icon className="w-7 h-7 text-primary group-hover:text-accent transition-colors" />
+              <Card key={index} className="hover:shadow-elegant transition-all duration-500 border-0 bg-gradient-card group hover:-translate-y-2">
+                <CardHeader className="pb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500 shadow-card">
+                    <Icon className="w-8 h-8 text-primary" />
                   </div>
-                  <CardTitle className="text-xl text-foreground">{item.title}</CardTitle>
+                  <CardTitle className="text-2xl font-display font-bold group-hover:text-primary transition-colors duration-300">{coverage.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <CardDescription className="text-base leading-relaxed text-foreground/70">{coverage.description}</CardDescription>
                 </CardContent>
               </Card>
             );

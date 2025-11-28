@@ -25,21 +25,22 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-accent">
-      <div className="container px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="py-24 lg:py-32 bg-gradient-primary relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <div
                 key={index}
-                className="text-center group hover:scale-105 transition-transform duration-300"
+                className="text-center group hover:scale-110 transition-transform duration-500"
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                  <Icon className="w-8 h-8 text-white" />
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center group-hover:bg-white/25 group-hover:shadow-glow transition-all duration-500 border border-white/20">
+                  <Icon className="w-10 h-10 text-white" />
                 </div>
-                <p className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</p>
-                <p className="text-white/90 font-medium">{stat.label}</p>
+                <p className="font-display text-5xl md:text-6xl font-bold text-white mb-3">{stat.value}</p>
+                <p className="text-white/95 font-medium text-lg">{stat.label}</p>
               </div>
             );
           })}

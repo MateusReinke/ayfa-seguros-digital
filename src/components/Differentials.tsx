@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, Shield, Users, Lightbulb } from "lucide-react";
+import { Clock, Shield, Users, Lightbulb, CheckCircle2 } from "lucide-react";
 
 const Differentials = () => {
   const differentials = [
@@ -46,37 +46,35 @@ const Differentials = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-20 bg-gradient-primary text-white">
-      <div className="container px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+    <section id="diferenciais" className="py-24 lg:py-32 bg-gradient-primary text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Por Que Escolher a Ayfa?
           </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Diferenciais que fazem da Ayfa a melhor escolha em seguros para eventos
+          <p className="text-xl text-white/95 max-w-3xl mx-auto leading-relaxed">
+            Mais de 15 anos de experiência oferecendo as melhores soluções em seguros para eventos
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {differentials.map((item, index) => {
             const Icon = item.icon;
             return (
-              <Card 
-                key={index} 
-                className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300"
-              >
-                <CardHeader>
-                  <div className="w-14 h-14 rounded-lg bg-accent flex items-center justify-center mb-3">
-                    <Icon className="w-7 h-7 text-white" />
+              <Card key={index} className="bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-500 group hover:-translate-y-2 shadow-card">
+                <CardHeader className="pb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
+                    <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-white">{item.title}</CardTitle>
+                  <CardTitle className="text-white text-2xl font-display font-bold">{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2">
-                    {item.items.map((detail, idx) => (
-                      <li key={idx} className="flex items-start text-white/90">
-                        <span className="text-accent mr-2">✓</span>
-                        <span>{detail}</span>
+                  <ul className="space-y-3">
+                    {item.items.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <CheckCircle2 className="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-white/95 text-base">{benefit}</span>
                       </li>
                     ))}
                   </ul>
