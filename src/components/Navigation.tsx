@@ -37,19 +37,19 @@ const Navigation = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container px-4 md:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="container px-4 md:px-6 mx-auto">
+        <div className="flex items-center justify-between h-16 md:h-20 max-w-7xl mx-auto">
           <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
             <img src={logo} alt="Ayfa Seguros" className="h-12 md:h-14" />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
+                className={`text-base font-medium transition-colors hover:text-accent ${
                   isScrolled ? "text-foreground" : "text-white"
                 }`}
               >
@@ -58,7 +58,7 @@ const Navigation = () => {
             ))}
             <Button
               onClick={() => scrollToSection("contato")}
-              className="bg-accent hover:bg-accent/90 text-white"
+              className="bg-accent hover:bg-accent/90 text-white font-semibold"
             >
               Solicitar Cotação
             </Button>
