@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const Testimonials = () => {
+  const { ref, isVisible } = useScrollReveal();
   const testimonials = [
     {
       name: "Roberto Silva",
@@ -27,9 +29,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-gradient-soft">
+    <section className="py-24 lg:py-32 bg-gradient-soft" ref={ref}>
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-20">
+        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             O Que Nossos Clientes Dizem
           </h2>
@@ -42,7 +44,10 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="hover:shadow-elegant transition-all duration-500 border-0 bg-gradient-card hover:-translate-y-2 group"
+              className={`hover:shadow-elegant transition-all duration-700 border-0 bg-gradient-card hover:-translate-y-2 group ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <CardContent className="pt-10 pb-8 px-8">
                 <div className="flex gap-1 mb-6">

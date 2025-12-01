@@ -1,7 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Shield, Users, Lightbulb, CheckCircle2 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const Differentials = () => {
+  const { ref, isVisible } = useScrollReveal();
   const differentials = [
     {
       icon: Clock,
@@ -46,10 +48,10 @@ const Differentials = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-24 lg:py-32 bg-gradient-primary text-white relative overflow-hidden">
+    <section id="diferenciais" className="py-24 lg:py-32 bg-gradient-primary text-white relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
       <div className="container px-4 md:px-6 relative z-10">
-        <div className="text-center mb-20">
+        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Por Que Escolher a Ayfa?
           </h2>
@@ -62,7 +64,13 @@ const Differentials = () => {
           {differentials.map((item, index) => {
             const Icon = item.icon;
             return (
-              <Card key={index} className="bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-500 group hover:-translate-y-2 shadow-card">
+              <Card 
+                key={index} 
+                className={`bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-700 group hover:-translate-y-2 shadow-card ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
                 <CardHeader className="pb-4">
                   <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
                     <Icon className="w-8 h-8 text-white" />

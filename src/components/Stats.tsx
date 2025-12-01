@@ -1,6 +1,8 @@
 import { Award, Users, Calendar, Shield } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const Stats = () => {
+  const { ref, isVisible } = useScrollReveal();
   const stats = [
     {
       icon: Calendar,
@@ -25,7 +27,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-gradient-primary relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-gradient-primary relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
       <div className="container px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16">
@@ -34,7 +36,10 @@ const Stats = () => {
             return (
               <div
                 key={index}
-                className="text-center group hover:scale-110 transition-transform duration-500"
+                className={`text-center group hover:scale-110 transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center group-hover:bg-white/25 group-hover:shadow-glow transition-all duration-500 border border-white/20">
                   <Icon className="w-10 h-10 text-white" />
