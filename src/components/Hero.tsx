@@ -22,13 +22,13 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-4 md:px-6 py-20 lg:py-32">
-        <div className="max-w-4xl">
-          <div className="flex items-center mb-8 animate-fade-in opacity-0" style={{animationDelay: '0.1s', animationFillMode: 'forwards'}}>
-            <img src={logo} alt="Ayfa Seguros" className="h-20 md:h-24 lg:h-28 drop-shadow-2xl" />
+      <div className="container relative z-10 px-4 md:px-6 py-24 lg:py-40">
+        <div className="max-w-5xl mx-auto text-center lg:text-left">
+          <div className="flex justify-center lg:justify-start items-center mb-10 animate-fade-in opacity-0" style={{animationDelay: '0.1s', animationFillMode: 'forwards'}}>
+            <img src={logo} alt="Ayfa Seguros" className="h-16 md:h-20 lg:h-24 drop-shadow-2xl" />
           </div>
           
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1] animate-fade-in opacity-0 tracking-tight" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] animate-fade-in opacity-0 tracking-tight" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
             Proteção Completa<br />
             <span className="text-accent">para seus Eventos</span>
           </h1>

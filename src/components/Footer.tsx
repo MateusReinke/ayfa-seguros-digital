@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12">
           <div>
             <div className="flex items-center mb-6">
-              <img src={logo} alt="Ayfa Seguros" className="h-14" />
+              <img src={logo} alt="Ayfa Seguros" className="h-10 md:h-12" />
             </div>
-            <p className="text-white/90 leading-relaxed text-lg">
+            <p className="text-white/90 leading-relaxed">
               Especialistas em seguros para eventos, garantindo proteção e tranquilidade há mais de 15 anos.
             </p>
           </div>
