@@ -3,8 +3,10 @@ import eventsIcon from "@/assets/events-icon.jpg";
 import liabilityIcon from "@/assets/liability-icon.jpg";
 import personalIcon from "@/assets/personal-icon.jpg";
 import { CheckCircle2 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const Services = () => {
+  const { ref, isVisible } = useScrollReveal();
   const services = [
     {
       title: "Seguros de Eventos",
@@ -48,9 +50,9 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="py-24 lg:py-32 bg-gradient-soft">
+    <section id="servicos" className="py-24 lg:py-32 bg-gradient-soft" ref={ref}>
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-20">
+        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Nossos Serviços
           </h2>
@@ -61,7 +63,13 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {services.map((service, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-elegant transition-all duration-500 border-0 bg-gradient-card group hover:-translate-y-2">
+            <Card 
+              key={index} 
+              className={`overflow-hidden hover:shadow-elegant transition-all duration-700 border-0 bg-gradient-card group hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
               <CardContent className="p-8 lg:p-10">
                 <div className="w-24 h-24 mb-8 rounded-2xl overflow-hidden shadow-card group-hover:scale-110 transition-transform duration-500">
                   <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />

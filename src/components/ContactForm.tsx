@@ -5,9 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const { ref, isVisible } = useScrollReveal();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,9 +48,9 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contato" className="py-24 lg:py-32 bg-background">
+    <section id="contato" className="py-24 lg:py-32 bg-background" ref={ref}>
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-20">
+        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Solicite sua Cotação
           </h2>
@@ -59,7 +61,7 @@ const ContactForm = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="border-0 bg-gradient-card shadow-elegant">
+          <Card className={`border-0 bg-gradient-card shadow-elegant transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <CardHeader className="pb-6">
               <CardTitle className="font-display text-3xl font-bold text-foreground">Envie sua Mensagem</CardTitle>
             </CardHeader>
@@ -129,7 +131,7 @@ const ContactForm = () => {
           </Card>
 
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ transitionDelay: '200ms' }}>
             <Card className="border-0 bg-gradient-card hover:shadow-elegant transition-all duration-300">
               <CardContent className="pt-8 pb-8">
                 <div className="flex items-start gap-6">
