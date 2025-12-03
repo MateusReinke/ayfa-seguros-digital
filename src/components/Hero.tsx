@@ -9,7 +9,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Colorful Overlay */}
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -18,8 +18,15 @@ const Hero = () => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple/90 via-primary/80 to-cyan/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.3),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--cyan)/0.2),transparent_50%)]" />
       </div>
+
+      {/* Animated gradient orbs */}
+      <div className="absolute top-20 right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-magenta/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
       {/* Content */}
       <div className="container relative z-10 px-4 md:px-6 py-24 lg:py-40">
@@ -30,7 +37,7 @@ const Hero = () => {
           
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] animate-fade-in opacity-0 tracking-tight" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
             Proteção Completa<br />
-            <span className="text-accent">para seus Eventos</span>
+            <span className="text-gradient-warm">para seus Eventos</span>
           </h1>
           
           <p className="text-xl md:text-2xl lg:text-3xl text-white/95 mb-12 font-light leading-relaxed animate-fade-in opacity-0 max-w-3xl mx-auto" style={{animationDelay: '0.5s', animationFillMode: 'forwards'}}>
@@ -41,7 +48,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-in opacity-0" style={{animationDelay: '0.7s', animationFillMode: 'forwards'}}>
             <Button 
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-white font-semibold px-10 py-7 text-lg shadow-glow hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white font-semibold px-10 py-7 text-lg shadow-glow hover:scale-105 transition-all duration-300"
               onClick={scrollToContact}
             >
               Solicitar Cotação
@@ -49,7 +56,7 @@ const Hero = () => {
             <Button 
               size="lg"
               variant="outline"
-              className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 hover:border-white/60 backdrop-blur-md font-semibold px-10 py-7 text-lg transition-all duration-300"
+              className="bg-white/10 hover:bg-white/20 text-white border-2 border-cyan/50 hover:border-cyan backdrop-blur-md font-semibold px-10 py-7 text-lg transition-all duration-300 hover:shadow-cyan"
               onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Conheça Nossos Serviços

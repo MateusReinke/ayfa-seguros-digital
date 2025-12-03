@@ -34,7 +34,7 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-elegant"
+          ? "bg-background/95 backdrop-blur-md shadow-elegant border-b border-border/50"
           : "bg-transparent"
       }`}
     >
@@ -51,8 +51,8 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-semibold transition-colors hover:text-accent uppercase tracking-wide ${
-                  isScrolled ? "text-foreground" : "text-white"
+                className={`text-sm font-semibold transition-all hover:text-primary uppercase tracking-wide relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all ${
+                  isScrolled ? "text-foreground" : "text-white hover:text-cyan"
                 }`}
               >
                 {item.label}
@@ -65,7 +65,7 @@ const Navigation = () => {
             <ThemeToggle className={isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} />
             <Button
               onClick={() => scrollToSection("contato")}
-              className="bg-accent hover:bg-accent/90 text-white font-bold px-6 py-5 shadow-glow"
+              className="bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white font-bold px-6 py-5 shadow-glow"
               size="lg"
             >
               Solicitar Cotação
@@ -87,14 +87,14 @@ const Navigation = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-left text-lg font-medium text-foreground hover:text-accent transition-colors py-2"
+                    className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
                   >
                     {item.label}
                   </button>
                 ))}
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="bg-accent hover:bg-accent/90 text-white w-full mt-4"
+                  className="bg-gradient-to-r from-accent to-gold text-white w-full mt-4"
                 >
                   Solicitar Cotação
                 </Button>

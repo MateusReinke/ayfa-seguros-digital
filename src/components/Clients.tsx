@@ -37,12 +37,18 @@ const Clients = () => {
     "Taste of São Paulo"
   ];
 
+  const colors = ['border-t-cyan', 'border-t-purple', 'border-t-accent', 'border-t-magenta', 'border-t-lime', 'border-t-gold', 'border-t-primary', 'border-t-teal'];
+
   return (
-    <section id="clientes" className="py-24 lg:py-32 bg-gradient-soft">
-      <div className="container px-4 md:px-6">
+    <section id="clientes" className="py-24 lg:py-32 bg-muted/50 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-64 h-64 bg-cyan/10 rounded-full blur-3xl" />
+      
+      <div className="container px-4 md:px-6 relative z-10">
         <div className={`text-center mb-20 transition-all duration-1000 ${isEventsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} ref={refEvents}>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Projetos de Destaque
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-gradient">Projetos de Destaque</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Presente nos maiores eventos do Brasil
@@ -53,7 +59,7 @@ const Clients = () => {
           {majorEvents.map((event, index) => (
             <Card 
               key={index} 
-              className={`hover:shadow-elegant transition-all duration-700 hover:-translate-y-2 border-0 bg-gradient-card group ${
+              className={`hover:shadow-elegant transition-all duration-700 hover:-translate-y-2 border border-border/50 bg-card group ${colors[index % colors.length]} border-t-4 ${
                 isEventsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -66,8 +72,8 @@ const Clients = () => {
         </div>
 
         <div className={`text-center mb-12 transition-all duration-1000 ${isClientsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} ref={refClients}>
-          <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Quem São Nossos Clientes?
+          <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="text-gradient-warm">Quem São Nossos Clientes?</span>
           </h3>
         </div>
 
@@ -79,7 +85,7 @@ const Clients = () => {
             {clientImages.map((logo, index) => (
               <div 
                 key={index}
-                className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+                className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 hover:scale-110"
               >
                 <img 
                   src={logo.src} 
