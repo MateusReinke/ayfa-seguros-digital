@@ -12,6 +12,8 @@ const Services = () => {
       title: "Seguros de Eventos",
       description: "Garantia de segurança e tranquilidade para o organizador do evento e seu cliente.",
       icon: eventsIcon,
+      color: "from-cyan to-primary",
+      shadowColor: "shadow-cyan",
       details: [
         "Transporte de Equipamento",
         "Instalação e Montagem",
@@ -25,6 +27,8 @@ const Services = () => {
       title: "Responsabilidade Civil",
       description: "Cobertura para danos materiais e corporais causados a terceiros durante o evento.",
       icon: liabilityIcon,
+      color: "from-purple to-magenta",
+      shadowColor: "shadow-purple",
       details: [
         "RC Equipamentos",
         "RC Empregador",
@@ -38,6 +42,8 @@ const Services = () => {
       title: "Seguros de Pessoas",
       description: "Proteção para o público espectador e equipe empregada na produção do evento.",
       icon: personalIcon,
+      color: "from-accent to-gold",
+      shadowColor: "shadow-glow",
       details: [
         "AP no local do Evento",
         "AP com adicional de traslado",
@@ -50,11 +56,15 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="py-24 lg:py-32 bg-gradient-soft" ref={ref}>
-      <div className="container px-4 md:px-6">
+    <section id="servicos" className="py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple/10 rounded-full blur-3xl" />
+      
+      <div className="container px-4 md:px-6 relative z-10">
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Nossos Serviços
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-gradient">Nossos Serviços</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Soluções completas em seguros para cada tipo de evento e necessidade
@@ -65,13 +75,16 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className={`overflow-hidden hover:shadow-elegant transition-all duration-700 border-0 bg-gradient-card group hover:-translate-y-2 ${
+              className={`overflow-hidden transition-all duration-700 border border-border/50 bg-card group hover:-translate-y-2 hover:${service.shadowColor} ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
+              {/* Gradient top bar */}
+              <div className={`h-1.5 bg-gradient-to-r ${service.color}`} />
+              
               <CardContent className="p-8 lg:p-10">
-                <div className="w-24 h-24 mb-8 rounded-2xl overflow-hidden shadow-card group-hover:scale-110 transition-transform duration-500">
+                <div className={`w-24 h-24 mb-8 rounded-2xl overflow-hidden group-hover:scale-110 transition-transform duration-500 ring-4 ring-offset-2 ring-offset-background ring-transparent group-hover:ring-primary/30`}>
                   <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-display text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">{service.title}</h3>

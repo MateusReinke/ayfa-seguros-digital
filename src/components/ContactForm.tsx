@@ -21,7 +21,6 @@ const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Create mailto link with form data
     const subject = encodeURIComponent(`Solicitação de Cotação - ${formData.eventType}`);
     const body = encodeURIComponent(
       `Nome: ${formData.name}\n` +
@@ -48,11 +47,16 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contato" className="py-24 lg:py-32 bg-background" ref={ref}>
-      <div className="container px-4 md:px-6">
+    <section id="contato" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted to-background" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple/10 rounded-full blur-3xl" />
+      
+      <div className="container px-4 md:px-6 relative z-10">
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Solicite sua Cotação
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-gradient">Solicite sua Cotação</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Preencha o formulário e nossa equipe entrará em contato em até 6 horas
@@ -61,7 +65,8 @@ const ContactForm = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className={`border-0 bg-gradient-card shadow-elegant transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <Card className={`border border-border/50 bg-card shadow-elegant transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+            <div className="h-1.5 bg-gradient-to-r from-cyan via-purple to-magenta rounded-t-lg" />
             <CardHeader className="pb-6">
               <CardTitle className="font-display text-3xl font-bold text-foreground">Envie sua Mensagem</CardTitle>
             </CardHeader>
@@ -73,7 +78,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className="border-border h-14 text-base"
+                    className="border-border h-14 text-base focus:border-primary focus:ring-primary"
                   />
                 </div>
                 
@@ -84,7 +89,7 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="border-border h-14 text-base"
+                    className="border-border h-14 text-base focus:border-primary focus:ring-primary"
                   />
                 </div>
                 
@@ -95,7 +100,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     required
-                    className="border-border h-14 text-base"
+                    className="border-border h-14 text-base focus:border-primary focus:ring-primary"
                   />
                 </div>
                 
@@ -105,7 +110,7 @@ const ContactForm = () => {
                     value={formData.eventType}
                     onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
                     required
-                    className="border-border h-14 text-base"
+                    className="border-border h-14 text-base focus:border-primary focus:ring-primary"
                   />
                 </div>
                 
@@ -115,13 +120,13 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
-                    className="min-h-[160px] border-border text-base"
+                    className="min-h-[160px] border-border text-base focus:border-primary focus:ring-primary"
                   />
                 </div>
                 
                 <Button
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent/90 text-white h-14 text-lg font-semibold shadow-glow hover:scale-105 transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white h-14 text-lg font-semibold shadow-glow hover:scale-105 transition-all duration-300"
                   size="lg"
                 >
                   Enviar Solicitação
@@ -132,20 +137,21 @@ const ContactForm = () => {
 
           {/* Contact Info */}
           <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ transitionDelay: '200ms' }}>
-            <Card className="border-0 bg-gradient-card hover:shadow-elegant transition-all duration-300">
+            <Card className="border border-border/50 bg-card hover:shadow-elegant transition-all duration-300 overflow-hidden">
+              <div className="h-1 bg-cyan" />
               <CardContent className="pt-8 pb-8">
                 <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 shadow-card">
-                    <Mail className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-cyan flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground mb-4 text-xl">Email</h3>
                     <p className="text-muted-foreground mb-2 font-medium">Contato Geral:</p>
-                    <a href="mailto:eventos@ayfa.com.br" className="text-accent hover:text-primary transition-colors text-lg font-semibold">
+                    <a href="mailto:eventos@ayfa.com.br" className="text-cyan hover:text-primary transition-colors text-lg font-semibold">
                       eventos@ayfa.com.br
                     </a>
                     <p className="text-muted-foreground mt-4 mb-2 font-medium">Marcela Gorgone:</p>
-                    <a href="mailto:marcela@ayfa.com.br" className="text-accent hover:text-primary transition-colors text-lg font-semibold">
+                    <a href="mailto:marcela@ayfa.com.br" className="text-cyan hover:text-primary transition-colors text-lg font-semibold">
                       marcela@ayfa.com.br
                     </a>
                   </div>
@@ -153,11 +159,12 @@ const ContactForm = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 bg-gradient-card hover:shadow-elegant transition-all duration-300">
+            <Card className="border border-border/50 bg-card hover:shadow-elegant transition-all duration-300 overflow-hidden">
+              <div className="h-1 bg-accent" />
               <CardContent className="pt-8 pb-8">
                 <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0 shadow-card">
-                    <Phone className="w-8 h-8 text-accent" />
+                  <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground mb-4 text-xl">Telefone</h3>
@@ -173,11 +180,12 @@ const ContactForm = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 bg-gradient-card hover:shadow-elegant transition-all duration-300">
+            <Card className="border border-border/50 bg-card hover:shadow-elegant transition-all duration-300 overflow-hidden">
+              <div className="h-1 bg-purple" />
               <CardContent className="pt-8 pb-8">
                 <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 shadow-card">
-                    <MapPin className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-purple flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground mb-4 text-xl">Localização</h3>

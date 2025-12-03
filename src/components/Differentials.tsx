@@ -8,6 +8,7 @@ const Differentials = () => {
     {
       icon: Clock,
       title: "Operacional",
+      color: "bg-cyan",
       items: [
         "Retorno de orçamentos em até 6 horas",
         "Emissão de apólice em 24 horas",
@@ -18,6 +19,7 @@ const Differentials = () => {
     {
       icon: Shield,
       title: "Gestão de Risco",
+      color: "bg-purple",
       items: [
         "Análise técnica do evento",
         "Integração com equipe de produção",
@@ -28,6 +30,7 @@ const Differentials = () => {
     {
       icon: Users,
       title: "Relacionamento",
+      color: "bg-magenta",
       items: [
         "Gerente de relacionamento dedicado",
         "Workshops com equipe de produção",
@@ -38,6 +41,7 @@ const Differentials = () => {
     {
       icon: Lightbulb,
       title: "Know How",
+      color: "bg-gold",
       items: [
         "Experiência no ramo de entretenimento",
         "Consultoria para eventos de grande porte",
@@ -48,14 +52,18 @@ const Differentials = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-24 lg:py-32 bg-gradient-primary text-white relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.1),transparent)] pointer-events-none" />
+    <section id="diferenciais" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
+      {/* Vibrant gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple to-magenta" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--cyan)/0.3),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--accent)/0.3),transparent_40%)]" />
+      
       <div className="container px-4 md:px-6 relative z-10">
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Por Que Escolher a Ayfa?
           </h2>
-          <p className="text-xl text-white/95 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Mais de 15 anos de experiência oferecendo as melhores soluções em seguros para eventos
           </p>
         </div>
@@ -66,13 +74,13 @@ const Differentials = () => {
             return (
               <Card 
                 key={index} 
-                className={`bg-white/10 backdrop-blur-md border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-700 group hover:-translate-y-2 shadow-card ${
+                className={`bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-700 group hover:-translate-y-2 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <CardHeader className="pb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
+                  <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-white text-2xl font-display font-bold">{item.title}</CardTitle>
@@ -81,7 +89,7 @@ const Differentials = () => {
                   <ul className="space-y-3">
                     {item.items.map((benefit, idx) => (
                       <li key={idx} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-lime mr-3 mt-0.5 flex-shrink-0" />
                         <span className="text-white/95 text-base">{benefit}</span>
                       </li>
                     ))}
