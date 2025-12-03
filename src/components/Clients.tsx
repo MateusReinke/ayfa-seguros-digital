@@ -1,9 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
+// Importa automaticamente todas as imagens da pasta clients
+const clientImages = import.meta.glob<{ default: string }>('/src/assets/clients/*.{png,jpg,jpeg,svg,webp,avif}', { eager: true });
+
 const Clients = () => {
   const { ref: refEvents, isVisible: isEventsVisible } = useScrollReveal();
   const { ref: refClients, isVisible: isClientsVisible } = useScrollReveal();
+  
   const majorEvents = [
     "Lollapalooza Brasil",
     "Rock In Rio",
@@ -19,16 +23,10 @@ const Clients = () => {
     "Taste of São Paulo"
   ];
 
-  const clients = [
-    "Agências de Marketing Promocional",
-    "Organizadores de Eventos",
-    "Promotores",
-    "Centros de Convenções",
-    "Patrocinadores",
-    "Produtoras de Eventos",
-    "Empresas de Publicidade",
-    "Promotores de Shows"
-  ];
+  const logos = Object.entries(clientImages).map(([path, module]) => ({
+    src: module.default,
+    name: path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'client'
+  }));
 
   return (
     <section id="clientes" className="py-24 lg:py-32 bg-gradient-soft">
@@ -64,20 +62,29 @@ const Clients = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {clients.map((client, index) => (
-            <div 
-              key={index}
-              className={`flex items-center gap-4 p-6 bg-gradient-card rounded-2xl shadow-card hover:shadow-elegant transition-all duration-700 group hover:-translate-y-1 ${
-                isClientsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <span className="text-accent text-3xl font-bold">•</span>
-              <span className="text-foreground font-medium text-lg group-hover:text-primary transition-colors duration-300">{client}</span>
-            </div>
-          ))}
-        </div>
+        {logos.length > 0 ? (
+          <div 
+            className={`flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 transition-all duration-1000 ${isClientsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{ transitionDelay: '200ms' }}
+          >
+            {logos.map((logo, index) => (
+              <div 
+                key={index}
+                className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+              >
+                <img 
+                  src={logo.src} 
+                  alt={logo.name}
+                  className="h-12 md:h-16 lg:h-20 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-muted-foreground">
+            Adicione logos na pasta src/assets/clients/
+          </p>
+        )}
       </div>
     </section>
   );
