@@ -2,7 +2,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 // Importa automaticamente todas as imagens da pasta clients
-const clientImages = import.meta.glob<{ default: string }>('/src/assets/clients/*.{png,jpg,jpeg,svg,webp,avif}', { eager: true });
+const clientModules = import.meta.glob<{ default: string }>([
+  '/src/assets/clients/*.png',
+  '/src/assets/clients/*.jpg',
+  '/src/assets/clients/*.jpeg',
+  '/src/assets/clients/*.svg',
+  '/src/assets/clients/*.webp',
+  '/src/assets/clients/*.avif'
+], { eager: true });
+
+const clientImages = Object.entries(clientModules)
+  .filter(([path]) => !path.includes('.gitkeep'))
+  .map(([path, module]) => ({
+    src: module.default,
+    name: path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'client'
+  }));
 
 const Clients = () => {
   const { ref: refEvents, isVisible: isEventsVisible } = useScrollReveal();
@@ -22,11 +36,6 @@ const Clients = () => {
     "Fifa Fan Fest",
     "Taste of São Paulo"
   ];
-
-  const logos = Object.entries(clientImages).map(([path, module]) => ({
-    src: module.default,
-    name: path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'client'
-  }));
 
   return (
     <section id="clientes" className="py-24 lg:py-32 bg-gradient-soft">
@@ -62,12 +71,12 @@ const Clients = () => {
           </h3>
         </div>
 
-        {logos.length > 0 ? (
+        {clientImages.length > 0 ? (
           <div 
             className={`flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 transition-all duration-1000 ${isClientsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             style={{ transitionDelay: '200ms' }}
           >
-            {logos.map((logo, index) => (
+            {clientImages.map((logo, index) => (
               <div 
                 key={index}
                 className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"

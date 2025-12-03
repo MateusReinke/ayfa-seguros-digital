@@ -78,7 +78,12 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Força tema escuro como padrão visual */
+  html {
+    color-scheme: dark;
   }
 
   html {
