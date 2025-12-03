@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import logo from "@/assets/ayfa-logo.png";
 
 const Navigation = () => {
@@ -59,8 +60,9 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Botão CTA à direita */}
-          <div className="absolute right-0 hidden lg:block">
+          {/* Botão CTA e Theme Toggle à direita */}
+          <div className="absolute right-0 hidden lg:flex items-center gap-3">
+            <ThemeToggle className={isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} />
             <Button
               onClick={() => scrollToSection("contato")}
               className="bg-accent hover:bg-accent/90 text-white font-bold px-6 py-5 shadow-glow"
@@ -71,12 +73,14 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className={isScrolled ? "" : "text-white hover:text-white"}>
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
+          <div className="lg:hidden absolute right-0 flex items-center gap-2">
+            <ThemeToggle className={isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} />
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className={isScrolled ? "" : "text-white hover:text-white"}>
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
               <div className="flex flex-col gap-4 mt-8">
                 {navItems.map((item) => (
@@ -96,7 +100,8 @@ const Navigation = () => {
                 </Button>
               </div>
             </SheetContent>
-          </Sheet>
+            </Sheet>
+          </div>
         </div>
       </div>
     </nav>
