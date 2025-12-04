@@ -1,43 +1,52 @@
 import logo from "@/assets/ayfa-logo.png";
 
 const Footer = () => {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <footer className="relative overflow-hidden py-16 lg:py-20">
+    <footer className="relative overflow-hidden py-12 md:py-16 lg:py-20">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-card via-muted to-card" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsl(var(--primary)/0.1),transparent_60%)]" />
       
       <div className="container px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12">
-          <div>
-            <div className="flex items-center mb-6">
-              <img src={logo} alt="Ayfa Seguros" className="h-10 md:h-12" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-8 md:mb-12">
+          <div className="sm:col-span-2 md:col-span-1">
+            <div className="flex items-center mb-4 md:mb-6">
+              <img src={logo} alt="Ayfa Seguros" className="h-8 md:h-10 lg:h-12" />
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              Especialistas em seguros para eventos, garantindo proteção e tranquilidade há mais de 15 anos.
+            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+              Especialistas em seguros para eventos, garantindo proteção e tranquilidade para organizadores há mais de 15 anos.
             </p>
           </div>
 
           <div>
-            <h3 className="font-display text-2xl font-bold mb-6 text-foreground">Serviços</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="hover:text-primary transition-colors cursor-pointer">Seguros de Eventos</li>
-              <li className="hover:text-cyan transition-colors cursor-pointer">Responsabilidade Civil</li>
-              <li className="hover:text-purple transition-colors cursor-pointer">Seguros de Pessoas</li>
-              <li className="hover:text-accent transition-colors cursor-pointer">Consultoria Especializada</li>
+            <h3 className="font-display text-lg md:text-xl lg:text-2xl font-bold mb-4 md:mb-6 text-foreground">Serviços</h3>
+            <ul className="space-y-2 md:space-y-3 text-muted-foreground text-sm md:text-base">
+              <li className="hover:text-primary transition-colors cursor-pointer" onClick={() => scrollToSection("servicos")}>Seguros de Eventos</li>
+              <li className="hover:text-cyan transition-colors cursor-pointer" onClick={() => scrollToSection("servicos")}>Responsabilidade Civil</li>
+              <li className="hover:text-purple transition-colors cursor-pointer" onClick={() => scrollToSection("servicos")}>Acidentes Pessoais</li>
+              <li className="hover:text-accent transition-colors cursor-pointer" onClick={() => scrollToSection("diferenciais")}>Consultoria Especializada</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-2xl font-bold mb-6 text-foreground">Contato</h3>
-            <ul className="space-y-3 text-muted-foreground">
+            <h3 className="font-display text-lg md:text-xl lg:text-2xl font-bold mb-4 md:mb-6 text-foreground">Contato</h3>
+            <ul className="space-y-2 md:space-y-3 text-muted-foreground text-sm md:text-base">
               <li>
                 <a href="mailto:eventos@ayfa.com.br" className="hover:text-primary transition-colors">
                   eventos@ayfa.com.br
                 </a>
               </li>
               <li>
-                <a href="tel:+551130681200" className="hover:text-accent transition-colors font-semibold text-xl text-foreground">
+                <a href="mailto:marcela@ayfa.com.br" className="hover:text-cyan transition-colors">
+                  marcela@ayfa.com.br
+                </a>
+              </li>
+              <li>
+                <a href="tel:+551130681200" className="hover:text-accent transition-colors font-semibold text-lg md:text-xl text-foreground">
                   (11) 3068-1200
                 </a>
               </li>
@@ -45,8 +54,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 text-center text-muted-foreground">
-          <p className="text-base">&copy; {new Date().getFullYear()} Ayfa Seguros. Todos os direitos reservados.</p>
+        <div className="border-t border-border pt-6 md:pt-8 text-center text-muted-foreground">
+          <p className="text-xs md:text-sm lg:text-base">&copy; {new Date().getFullYear()} Ayfa Seguros. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
