@@ -7,6 +7,7 @@ import logo from "@/assets/ayfa-logo.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,7 @@ const Navigation = () => {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false);
   };
 
   const navItems = [
@@ -39,14 +41,14 @@ const Navigation = () => {
       }`}
     >
       <div className="container px-4 md:px-6 mx-auto max-w-7xl">
-        <div className="flex items-center justify-center h-20 md:h-24 relative">
-          {/* Logo à esquerda */}
-          <div className="absolute left-0 flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
-            <img src={logo} alt="Ayfa Seguros" className="h-10 md:h-12 lg:h-14" />
+        <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
+          {/* Logo */}
+          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
+            <img src={logo} alt="Ayfa Seguros" className="h-8 md:h-10 lg:h-12" />
           </div>
 
-          {/* Desktop Navigation - Centralizado */}
-          <div className="hidden lg:flex items-center gap-8 xl:gap-10">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -61,45 +63,45 @@ const Navigation = () => {
           </div>
 
           {/* Botão CTA e Theme Toggle à direita */}
-          <div className="absolute right-0 hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle className={isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} />
             <Button
               onClick={() => scrollToSection("contato")}
-              className="bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white font-bold px-6 py-5 shadow-glow"
-              size="lg"
+              className="bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white font-bold px-5 py-4 shadow-glow"
+              size="default"
             >
               Solicitar Cotação
             </Button>
           </div>
 
           {/* Mobile Navigation */}
-          <div className="lg:hidden absolute right-0 flex items-center gap-2">
-            <ThemeToggle className={isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} />
-            <Sheet>
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle className={`${isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} h-9 w-9`} />
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className={isScrolled ? "" : "text-white hover:text-white"}>
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon" className={`${isScrolled ? "" : "text-white hover:text-white"} h-9 w-9`}>
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
-              <div className="flex flex-col gap-4 mt-8">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-left text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+              <SheetContent side="right" className="w-[280px] sm:w-[320px]">
+                <div className="flex flex-col gap-2 mt-6">
+                  {navItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-left text-base font-medium text-foreground hover:text-primary hover:bg-muted transition-colors py-3 px-3 rounded-lg"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                  <Button
+                    onClick={() => scrollToSection("contato")}
+                    className="bg-gradient-to-r from-accent to-gold text-white w-full mt-4"
                   >
-                    {item.label}
-                  </button>
-                ))}
-                <Button
-                  onClick={() => scrollToSection("contato")}
-                  className="bg-gradient-to-r from-accent to-gold text-white w-full mt-4"
-                >
-                  Solicitar Cotação
-                </Button>
-              </div>
-            </SheetContent>
+                    Solicitar Cotação
+                  </Button>
+                </div>
+              </SheetContent>
             </Sheet>
           </div>
         </div>

@@ -10,10 +10,11 @@ const Differentials = () => {
       title: "Operacional",
       color: "bg-cyan",
       items: [
+        "Apoio na pré-produção do evento",
+        "Ferramenta para estimativa de custos",
         "Retorno de orçamentos em até 6 horas",
         "Emissão de apólice em 24 horas",
-        "Flexibilidade para pagamentos",
-        "Apoio na pré-produção do evento"
+        "Flexibilidade para pagamentos a faturar"
       ]
     },
     {
@@ -22,9 +23,9 @@ const Differentials = () => {
       color: "bg-purple",
       items: [
         "Análise técnica do evento",
+        "Sugestão de garantias e importância segurada",
         "Integração com equipe de produção",
-        "Orientações sobre prevenção",
-        "Sugestão de garantias"
+        "Orientações sobre prevenção e seguros"
       ]
     },
     {
@@ -33,9 +34,9 @@ const Differentials = () => {
       color: "bg-magenta",
       items: [
         "Gerente de relacionamento dedicado",
+        "Atendimento às necessidades da agência",
         "Workshops com equipe de produção",
-        "Projetos especiais personalizados",
-        "Atendimento às necessidades da agência"
+        "Desenvolvimento de projetos especiais"
       ]
     },
     {
@@ -52,23 +53,23 @@ const Differentials = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
+    <section id="diferenciais" className="py-16 md:py-24 lg:py-32 relative overflow-hidden" ref={ref}>
       {/* Vibrant gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple to-magenta" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--cyan)/0.3),transparent_40%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--accent)/0.3),transparent_40%)]" />
       
       <div className="container px-4 md:px-6 relative z-10">
-        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        <div className={`text-center mb-12 md:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
             Por Que Escolher a Ayfa?
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed px-2">
             Mais de 15 anos de experiência oferecendo as melhores soluções em seguros para eventos
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {differentials.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -79,18 +80,18 @@ const Differentials = () => {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <CardHeader className="pb-4">
-                  <div className={`w-16 h-16 rounded-2xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500`}>
-                    <Icon className="w-8 h-8 text-white" />
+                <CardHeader className="pb-3 md:pb-4 p-4 md:p-6">
+                  <div className={`w-12 md:w-16 h-12 md:h-16 rounded-xl md:rounded-2xl ${item.color} flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 group-hover:shadow-glow transition-all duration-500`}>
+                    <Icon className="w-6 md:w-8 h-6 md:h-8 text-white" />
                   </div>
-                  <CardTitle className="text-white text-2xl font-display font-bold">{item.title}</CardTitle>
+                  <CardTitle className="text-white text-lg md:text-xl lg:text-2xl font-display font-bold">{item.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
+                <CardContent className="p-4 md:p-6 pt-0">
+                  <ul className="space-y-2 md:space-y-3">
                     {item.items.map((benefit, idx) => (
                       <li key={idx} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-lime mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-white/95 text-base">{benefit}</span>
+                        <CheckCircle2 className="w-4 md:w-5 h-4 md:h-5 text-lime mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-white/95 text-sm md:text-base">{benefit}</span>
                       </li>
                     ))}
                   </ul>
