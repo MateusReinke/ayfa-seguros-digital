@@ -36,13 +36,13 @@ const Hero = () => {
           </div>
           
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 md:mb-6 leading-[1.1] animate-fade-in opacity-0 tracking-tight" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
-            Seguros de Eventos<br />
+            Sua Corretora de Seguros<br />
             <span className="text-gradient-warm">Proteção Completa</span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-8 md:mb-12 font-light leading-relaxed animate-fade-in opacity-0 max-w-3xl mx-auto px-2" style={{animationDelay: '0.5s', animationFillMode: 'forwards'}}>
-            Segurança e tranquilidade para organizadores de eventos. Garantimos a reposição de prejuízos 
-            e eventuais imprevistos ocorridos antes, durante e após seu evento.
+            Soluções personalizadas em seguros para você, sua família e seu negócio. 
+            Proteção e tranquilidade com atendimento especializado.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center animate-fade-in opacity-0 px-4" style={{animationDelay: '0.7s', animationFillMode: 'forwards'}}>
@@ -65,9 +65,9 @@ const Hero = () => {
 
           {/* Client types */}
           <div className="mt-10 md:mt-16 animate-fade-in opacity-0" style={{animationDelay: '0.9s', animationFillMode: 'forwards'}}>
-            <p className="text-white/70 text-sm md:text-base mb-4">Atendemos:</p>
+            <p className="text-white/70 text-sm md:text-base mb-4">Seguros para:</p>
             <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-2">
-              {['Agências de Eventos', 'Organizadores', 'Promotores', 'Centros de Convenções', 'Patrocinadores'].map((client, idx) => (
+              {['Pessoas', 'Empresas', 'Veículos', 'Patrimônio', 'Eventos'].map((client, idx) => (
                 <span key={idx} className="px-3 md:px-4 py-1.5 md:py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-xs md:text-sm border border-white/20">
                   {client}
                 </span>

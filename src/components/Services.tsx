@@ -9,50 +9,50 @@ const Services = () => {
   const { ref, isVisible } = useScrollReveal();
   const services = [
     {
-      title: "Seguros de Eventos",
-      description: "O seguro para eventos garante segurança e tranquilidade para o organizador e seu cliente, com reposição de prejuízos e imprevistos.",
-      icon: eventsIcon,
+      title: "Seguros Pessoais",
+      description: "Proteção completa para você e sua família, garantindo tranquilidade em todos os momentos da vida.",
+      icon: personalIcon,
       color: "from-cyan to-primary",
       shadowColor: "shadow-cyan",
       details: [
-        "Transporte de Equipamento",
-        "Instalação e Montagem",
-        "No Show",
-        "Evento Público",
-        "Staff",
-        "Desmontagem do Evento"
+        "Seguro de Vida",
+        "Acidentes Pessoais",
+        "Seguro Viagem",
+        "Seguro Residencial",
+        "Planos de Saúde",
+        "Previdência Privada"
       ]
     },
     {
-      title: "Responsabilidade Civil",
-      description: "Cobertura para danos materiais e corporais causados a terceiros durante o evento, desde sua concepção até a desmontagem.",
+      title: "Seguros Empresariais",
+      description: "Soluções sob medida para proteger seu negócio, funcionários e patrimônio empresarial.",
       icon: liabilityIcon,
       color: "from-purple to-magenta",
       shadowColor: "shadow-purple",
       details: [
-        "RC Equipamentos",
-        "RC Empregador",
-        "RC Restaurantes",
-        "RC Artistas",
-        "RC Instalação e Montagem",
-        "RC Danos Morais",
-        "RC Tumultos",
-        "RC Cruzada"
+        "Seguro Empresarial",
+        "Responsabilidade Civil",
+        "Seguro de Frota",
+        "Seguro de Carga",
+        "Riscos de Engenharia",
+        "Seguro Garantia",
+        "D&O (Diretores)",
+        "Cyber Risks"
       ]
     },
     {
-      title: "Acidentes Pessoais",
-      description: "Destina-se ao público espectador e à equipe empregada na produção do evento em caso de acidentes.",
-      icon: personalIcon,
+      title: "Seguros de Eventos",
+      description: "Segurança e tranquilidade para organizadores de eventos, do planejamento à desmontagem.",
+      icon: eventsIcon,
       color: "from-accent to-gold",
       shadowColor: "shadow-glow",
       details: [
-        "AP no local do Evento",
-        "AP com adicional de traslado",
-        "AP 24 Horas para Staff",
-        "Morte Acidental",
-        "Invalidez por Acidente",
-        "Despesas Médicas Hospitalares"
+        "Cancelamento de Evento",
+        "Responsabilidade Civil",
+        "Acidentes Pessoais",
+        "Equipamentos",
+        "No Show de Artistas",
+        "Cobertura Climática"
       ]
     }
   ];
@@ -69,8 +69,8 @@ const Services = () => {
             <span className="text-gradient">Nossos Serviços</span>
           </h2>
           <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-            Soluções completas em seguros para cada tipo de evento e necessidade, 
-            do planejamento à desmontagem.
+            Soluções completas em seguros para pessoas, empresas e eventos. 
+            Encontre a proteção ideal para cada necessidade.
           </p>
         </div>
 
