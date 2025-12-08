@@ -48,8 +48,8 @@ const FAQ = () => {
   return (
     <section id="faq" className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-32 md:w-64 h-32 md:h-64 bg-cyan/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-40 md:w-72 h-40 md:h-72 bg-purple/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-32 md:w-64 h-32 md:h-64 bg-cyan rounded-full blur-3xl" style={{ opacity: 0.05 }} />
+      <div className="absolute bottom-20 right-10 w-40 md:w-72 h-40 md:h-72 bg-purple rounded-full blur-3xl" style={{ opacity: 0.05 }} />
       
       <div className="container px-4 md:px-6 relative z-10">
         <div className={`text-center mb-12 md:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -67,12 +67,12 @@ const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className={`bg-card border border-border/50 ${colors[index % colors.length]} border-l-4 rounded-xl md:rounded-2xl px-4 md:px-8 hover:shadow-elegant transition-all duration-700 ${
+                className={`bg-card border border-border ${colors[index % colors.length]} border-l-4 rounded-xl md:rounded-2xl px-4 md:px-8 hover:shadow-elegant transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary hover:no-underline py-4 md:py-6 text-sm md:text-base lg:text-lg">
+                <AccordionTrigger className="text-left font-semibold text-card-foreground hover:text-primary hover:no-underline py-4 md:py-6 text-sm md:text-base lg:text-lg">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-4 md:pb-6 text-sm md:text-base leading-relaxed">
