@@ -24,10 +24,10 @@ const Navigation = () => {
 
   const navItems = [
     { label: "Início", id: "hero" },
+    { label: "Quem Somos", id: "quem-somos" },
     { label: "Serviços", id: "servicos" },
     { label: "Cobertura", id: "cobertura" },
     { label: "Diferenciais", id: "diferenciais" },
-    { label: "Clientes", id: "clientes" },
     { label: "FAQ", id: "faq" },
     { label: "Contato", id: "contato" },
   ];
