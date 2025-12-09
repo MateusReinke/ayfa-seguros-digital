@@ -1,9 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import eventsIcon from "@/assets/events-icon.jpg";
 import liabilityIcon from "@/assets/liability-icon.jpg";
 import personalIcon from "@/assets/personal-icon.jpg";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -13,6 +15,7 @@ const Services = () => {
       description: "Proteção completa para você e sua família, garantindo tranquilidade em todos os momentos da vida.",
       icon: personalIcon,
       color: "bg-cyan",
+      link: "/servicos/acidentes-pessoais",
       details: [
         "Seguro de Vida",
         "Acidentes Pessoais",
@@ -27,6 +30,7 @@ const Services = () => {
       description: "Soluções sob medida para proteger seu negócio, funcionários e patrimônio empresarial.",
       icon: liabilityIcon,
       color: "bg-purple",
+      link: "/servicos/responsabilidade-civil",
       details: [
         "Seguro Empresarial",
         "Responsabilidade Civil",
@@ -43,6 +47,7 @@ const Services = () => {
       description: "Segurança e tranquilidade para organizadores de eventos, do planejamento à desmontagem.",
       icon: eventsIcon,
       color: "bg-accent",
+      link: "/servicos/eventos",
       details: [
         "Cancelamento de Evento",
         "Responsabilidade Civil",
@@ -83,13 +88,13 @@ const Services = () => {
               {/* Gradient top bar */}
               <div className={`h-1.5 ${service.color}`} />
               
-              <CardContent className="p-5 md:p-8 lg:p-10">
+              <CardContent className="p-5 md:p-8 lg:p-10 flex flex-col h-full">
                 <div className={`w-16 md:w-24 h-16 md:h-24 mb-5 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden group-hover:scale-110 transition-transform duration-500 ring-4 ring-offset-2 ring-offset-card ring-transparent group-hover:ring-primary/30`}>
                   <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-card-foreground mb-3 md:mb-4 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
                 <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base lg:text-lg leading-relaxed">{service.description}</p>
-                <ul className="space-y-2 md:space-y-3">
+                <ul className="space-y-2 md:space-y-3 mb-6 flex-grow">
                   {service.details.map((detail, idx) => (
                     <li key={idx} className="flex items-start">
                       <CheckCircle2 className="w-4 md:w-5 h-4 md:h-5 text-accent mr-2 md:mr-3 mt-0.5 md:mt-1 flex-shrink-0" />
@@ -97,6 +102,11 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
+                <Button asChild variant="outline" className="w-full mt-auto group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
+                  <Link to={service.link}>
+                    Saiba mais <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           ))}

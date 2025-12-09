@@ -44,10 +44,10 @@ const Clients = () => {
   const colors = ['border-t-cyan', 'border-t-purple', 'border-t-accent', 'border-t-magenta', 'border-t-lime', 'border-t-gold', 'border-t-primary', 'border-t-teal'];
 
   return (
-    <section id="clientes" className="py-16 md:py-24 lg:py-32 bg-muted/50 relative overflow-hidden">
+<section id="clientes" className="py-16 md:py-24 lg:py-32 bg-secondary relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-20 right-10 md:right-20 w-40 md:w-72 h-40 md:h-72 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 md:left-20 w-32 md:w-64 h-32 md:h-64 bg-cyan/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-10 md:right-20 w-40 md:w-72 h-40 md:h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-10 md:left-20 w-32 md:w-64 h-32 md:h-64 bg-accent/5 rounded-full blur-3xl" />
       
       <div className="container px-4 md:px-6 relative z-10">
         <div className={`text-center mb-12 md:mb-20 transition-all duration-1000 ${isEventsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} ref={refEvents}>
@@ -63,7 +63,7 @@ const Clients = () => {
           {majorEvents.map((event, index) => (
             <Card 
               key={index} 
-              className={`hover:shadow-elegant transition-all duration-700 hover:-translate-y-2 border border-border/50 bg-card group ${colors[index % colors.length]} border-t-4 ${
+              className={`hover:shadow-elegant transition-all duration-700 hover:-translate-y-2 border border-border bg-card group ${colors[index % colors.length]} border-t-4 ${
                 isEventsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 50}ms` }}
