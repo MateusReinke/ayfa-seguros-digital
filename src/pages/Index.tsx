@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import AboutUs from "@/components/AboutUs";
 import Services from "@/components/Services";
+import OperationalServices from "@/components/OperationalServices";
 import Stats from "@/components/Stats";
 import Coverage from "@/components/Coverage";
 import Differentials from "@/components/Differentials";
@@ -20,6 +21,7 @@ const Index = () => {
       <Hero />
       <AboutUs />
       <Services />
+      <OperationalServices />
       <Stats />
       <Coverage />
       <Differentials />
