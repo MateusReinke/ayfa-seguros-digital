@@ -29,9 +29,7 @@ const Hero = () => {
       <div className="container relative z-10 px-4 md:px-6 py-12 md:py-24 lg:py-40">
         <div className="max-w-5xl mx-auto text-center">
           <div className="flex justify-center items-center mb-6 md:mb-10 animate-fade-in opacity-0" style={{animationDelay: '0.1s', animationFillMode: 'forwards'}}>
-            <div className="bg-white/95 dark:bg-white rounded-2xl p-3 md:p-4 shadow-lg">
-              <img src={logo} alt="Ayfa Seguros" className="h-12 md:h-16 lg:h-20 xl:h-24" />
-            </div>
+            <img src={logo} alt="Ayfa Seguros" className="h-16 md:h-24 lg:h-32 xl:h-40 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]" />
           </div>
           
           <h1 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-4 md:mb-6 leading-[1.1] animate-fade-in opacity-0 tracking-tight" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
