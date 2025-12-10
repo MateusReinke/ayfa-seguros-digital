@@ -6,7 +6,6 @@ import personalIcon from "@/assets/personal-icon.jpg";
 import { CheckCircle2, ChevronDown, Shield, Users, FileCheck, Building, Briefcase, Calendar, Truck, HardHat, Scale, Monitor, Heart, Plane, Home, Stethoscope, PiggyBank } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState } from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -115,93 +114,107 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:gap-8">
+        {/* Cards em grid horizontal */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
-            <Collapsible
+            <Card 
               key={index}
-              open={openService === index}
-              onOpenChange={() => toggleService(index)}
+              className={`overflow-hidden transition-all duration-700 border border-border bg-card ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              } ${openService === index ? 'ring-2 ring-primary' : ''}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Card 
-                className={`overflow-hidden transition-all duration-700 border border-border bg-card ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                {/* Gradient top bar */}
-                <div className={`h-1.5 ${service.color}`} />
-                
-                <CardContent className="p-5 md:p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                    <div className={`w-16 md:w-20 h-16 md:h-20 flex-shrink-0 rounded-xl overflow-hidden ring-4 ring-offset-2 ring-offset-card ring-primary/20`}>
-                      <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
-                    </div>
-                    
-                    <div className="flex-grow">
-                      <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-card-foreground mb-2">{service.title}</h3>
-                      <p className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed mb-4">{service.description}</p>
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {service.details.map((detail, idx) => (
-                          <span key={idx} className="inline-flex items-center px-3 py-1 rounded-full text-xs md:text-sm bg-secondary text-secondary-foreground">
-                            <CheckCircle2 className="w-3 h-3 mr-1.5 text-accent" />
-                            {detail}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <CollapsibleTrigger asChild>
-                      <Button 
-                        variant="outline" 
-                        className="flex-shrink-0 group border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                      >
-                        Ver Coberturas
-                        <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-300 ${openService === index ? 'rotate-180' : ''}`} />
-                      </Button>
-                    </CollapsibleTrigger>
+              {/* Gradient top bar */}
+              <div className={`h-1.5 ${service.color}`} />
+              
+              <CardContent className="p-5 md:p-6">
+                <div className="flex flex-col items-center text-center">
+                  <div className={`w-16 md:w-20 h-16 md:h-20 rounded-xl overflow-hidden ring-4 ring-offset-2 ring-offset-card ring-primary/20 mb-4`}>
+                    <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
+                  </div>
+                  
+                  <h3 className="font-display text-lg md:text-xl font-bold text-card-foreground mb-2">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.description}</p>
+                  
+                  <div className="flex flex-wrap justify-center gap-1.5 mb-4">
+                    {service.details.slice(0, 4).map((detail, idx) => (
+                      <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-secondary text-secondary-foreground">
+                        <CheckCircle2 className="w-3 h-3 mr-1 text-accent" />
+                        {detail}
+                      </span>
+                    ))}
+                    {service.details.length > 4 && (
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-secondary text-secondary-foreground">
+                        +{service.details.length - 4} mais
+                      </span>
+                    )}
                   </div>
 
-                  <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                    <div className="pt-8 mt-8 border-t border-border">
-                      <p className="text-muted-foreground mb-6 text-center max-w-2xl mx-auto">
-                        {service.expandedContent.description}
-                      </p>
-                      
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                        {service.expandedContent.coverages.map((coverage, idx) => (
-                          <div 
-                            key={idx} 
-                            className="p-4 rounded-xl bg-secondary border border-border hover:border-primary/50 transition-all duration-300 group/item"
-                          >
-                            <div className={`w-10 h-10 rounded-lg ${service.color} flex items-center justify-center mb-3`}>
-                              <coverage.icon className="w-5 h-5 text-primary-foreground" />
-                            </div>
-                            <h4 className="font-semibold text-card-foreground mb-1 group-hover/item:text-primary transition-colors">
-                              {coverage.title}
-                            </h4>
-                            <p className="text-sm text-muted-foreground">
-                              {coverage.desc}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="mt-6 text-center">
-                        <Button 
-                          className="bg-primary text-primary-foreground hover:bg-primary/90"
-                          onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-                        >
-                          Solicitar Cotação
-                        </Button>
-                      </div>
-                    </div>
-                  </CollapsibleContent>
-                </CardContent>
-              </Card>
-            </Collapsible>
+                  <Button 
+                    variant="outline" 
+                    className="w-full group border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    onClick={() => toggleService(index)}
+                  >
+                    Ver Coberturas
+                    <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-300 ${openService === index ? 'rotate-180' : ''}`} />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
+
+        {/* Conteúdo expandido abaixo dos cards */}
+        {openService !== null && (
+          <div className="mt-8 animate-fade-in">
+            <Card className="overflow-hidden border border-primary bg-card">
+              <div className={`h-1.5 ${services[openService].color}`} />
+              <CardContent className="p-6 md:p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-12 h-12 rounded-xl overflow-hidden ring-2 ring-primary/20`}>
+                    <img src={services[openService].icon} alt={services[openService].title} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-card-foreground">
+                      {services[openService].title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {services[openService].expandedContent.description}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {services[openService].expandedContent.coverages.map((coverage, idx) => (
+                    <div 
+                      key={idx} 
+                      className="p-4 rounded-xl bg-secondary border border-border hover:border-primary/50 transition-all duration-300 group/item"
+                    >
+                      <div className={`w-10 h-10 rounded-lg ${services[openService].color} flex items-center justify-center mb-3`}>
+                        <coverage.icon className="w-5 h-5 text-primary-foreground" />
+                      </div>
+                      <h4 className="font-semibold text-card-foreground mb-1 group-hover/item:text-primary transition-colors">
+                        {coverage.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {coverage.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 text-center">
+                  <Button 
+                    className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Solicitar Cotação
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </section>
   );
