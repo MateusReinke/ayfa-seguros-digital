@@ -60,7 +60,7 @@ const OperationalServices = () => {
           className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Nossos Serviços</span>
+            <span className="text-gradient">Nosso Atendimento</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
             Atendimento completo e especializado para sua tranquilidade
