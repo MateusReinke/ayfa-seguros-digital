@@ -13,15 +13,13 @@ import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
+  return <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <Hero />
       <AboutUs />
       <Services />
-      <OperationalServices />
+      
       <Stats />
       <Coverage />
       <Differentials />
@@ -32,8 +30,6 @@ const Index = () => {
       <ContactForm />
       <Footer />
       <WhatsAppButton />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
