@@ -18,8 +18,11 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setIsOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(false);
+    }
   };
 
   const navItems = [
@@ -27,7 +30,8 @@ const Navigation = () => {
     { label: "Quem Somos", id: "quem-somos" },
     { label: "Serviços", id: "servicos" },
     { label: "Cobertura", id: "cobertura" },
-    { label: "Diferenciais", id: "diferenciais" },
+    { label: "Eventos", id: "portfolio" }, 
+    { label: "Clientes", id: "clientes" }, 
     { label: "FAQ", id: "faq" },
     { label: "Contato", id: "contato" },
   ];
@@ -41,15 +45,19 @@ const Navigation = () => {
       }`}
     >
       <div className="container px-4 md:px-6 mx-auto max-w-7xl">
-        <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
-          {/* Espaço esquerdo - itens de navegação em desktop */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6 flex-1">
+        {/* CORREÇÃO: Adicionado 'gap-4 lg:gap-8' para evitar que os menus colem no centro */}
+        <div className="flex items-center justify-between h-16 md:h-20 lg:h-24 gap-4 lg:gap-4">
+          
+          {/* LADO ESQUERDO */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6 flex-1 justify-end">
             {navItems.slice(0, 4).map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`text-xs xl:text-sm font-semibold transition-all hover:text-primary uppercase tracking-wide relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all ${
-                  isScrolled ? "text-foreground" : "text-white hover:text-cyan"
+                  isScrolled 
+                    ? "text-foreground" 
+                    : "text-foreground dark:text-white hover:text-primary"
                 }`}
               >
                 {item.label}
@@ -57,12 +65,12 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Logo centralizada - aparece apenas quando scrolled */}
+          {/* LOGO CENTRAL */}
           <div 
-            className={`hidden lg:flex items-center justify-center transition-all duration-500 ${
+            className={`hidden lg:flex items-center justify-center transition-all duration-500 overflow-hidden ${
               isScrolled 
-                ? "opacity-100 scale-100" 
-                : "opacity-0 scale-75 pointer-events-none"
+                ? "max-w-[200px] opacity-100 scale-100 px-4" 
+                : "max-w-0 opacity-0 scale-75 px-0"
             }`}
           >
             <img 
@@ -73,32 +81,38 @@ const Navigation = () => {
             />
           </div>
 
-          {/* Espaço direito - itens de navegação + CTA */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6 flex-1 justify-end">
+          {/* LADO DIREITO */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6 flex-1 justify-start">
             {navItems.slice(4).map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`text-xs xl:text-sm font-semibold transition-all hover:text-primary uppercase tracking-wide relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all ${
-                  isScrolled ? "text-foreground" : "text-white hover:text-cyan"
+                  isScrolled 
+                    ? "text-foreground hover:text-primary" 
+                    : "text-foreground dark:text-white hover:text-primary"
                 }`}
               >
                 {item.label}
               </button>
             ))}
-            <ThemeToggle className={isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} />
-            <Button
-              onClick={() => scrollToSection("contato")}
-              className="bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white font-bold px-4 py-3 shadow-glow text-xs xl:text-sm"
-              size="sm"
-            >
-              Cotação
-            </Button>
+            
+            <div className="flex items-center gap-4 ml-auto">
+              <ThemeToggle 
+                className={isScrolled ? "" : "text-foreground dark:text-white hover:bg-black/5 dark:hover:bg-white/10"} 
+              />
+              <Button
+                onClick={() => scrollToSection("contato")}
+                className="bg-gradient-to-r from-accent to-gold hover:opacity-90 text-white font-bold px-4 py-3 shadow-glow text-xs xl:text-sm"
+                size="sm"
+              >
+                Cotação
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
           <div className="lg:hidden flex items-center justify-between w-full">
-            {/* Logo mobile - aparece apenas quando scrolled */}
             <div 
               className={`transition-all duration-500 ${
                 isScrolled 
@@ -115,10 +129,10 @@ const Navigation = () => {
             </div>
             
             <div className="flex items-center gap-2">
-              <ThemeToggle className={`${isScrolled ? "" : "text-white hover:text-white hover:bg-white/10"} h-9 w-9`} />
+              <ThemeToggle className={`${isScrolled ? "" : "text-foreground dark:text-white hover:bg-black/5 dark:hover:bg-white/10"} h-9 w-9`} />
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className={`${isScrolled ? "" : "text-white hover:text-white"} h-9 w-9`}>
+                  <Button variant="ghost" size="icon" className={`${isScrolled ? "" : "text-foreground dark:text-white hover:text-primary"} h-9 w-9`}>
                     <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>

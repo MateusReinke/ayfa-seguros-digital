@@ -1,220 +1,233 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import eventsIcon from "@/assets/events-icon.jpg";
-import liabilityIcon from "@/assets/liability-icon.jpg";
-import personalIcon from "@/assets/personal-icon.jpg";
-import { CheckCircle2, ChevronDown, Shield, Users, FileCheck, Building, Briefcase, Calendar, Truck, HardHat, Scale, Monitor, Heart, Plane, Home, Stethoscope, PiggyBank } from "lucide-react";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState } from "react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Button } from "@/components/ui/button";
+import { 
+  Shield, Users, Building, Briefcase, Calendar, Truck, HardHat, 
+  Scale, Monitor, Heart, Plane, Home, Stethoscope, PiggyBank, 
+  ArrowRight, Factory, MousePointerClick
+} from "lucide-react";
+
+import bgImage from "@/assets/about-bg.jpg";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
-  const [openService, setOpenService] = useState<number | null>(null);
+  const [activeId, setActiveId] = useState<number>(1);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const services = [
     {
-      title: "Seguros Pessoais",
-      description: "Proteção completa para você e sua família, garantindo tranquilidade em todos os momentos da vida.",
-      icon: personalIcon,
-      color: "bg-cyan",
-      details: [
-        "Seguro de Vida",
-        "Acidentes Pessoais",
-        "Seguro Viagem",
-        "Seguro Residencial",
-        "Planos de Saúde",
-        "Previdência Privada"
-      ],
-      expandedContent: {
-        description: "Oferecemos uma linha completa de seguros pessoais para proteger você e sua família em todas as situações da vida.",
-        coverages: [
-          { icon: Heart, title: "Seguro de Vida", desc: "Proteção financeira para sua família em caso de imprevistos" },
-          { icon: Shield, title: "Acidentes Pessoais", desc: "Cobertura para acidentes em qualquer lugar do mundo" },
-          { icon: Plane, title: "Seguro Viagem", desc: "Viaje com tranquilidade, cobertura médica e bagagem" },
-          { icon: Home, title: "Seguro Residencial", desc: "Proteção completa para seu lar e seus bens" },
-          { icon: Stethoscope, title: "Planos de Saúde", desc: "Acesso aos melhores hospitais e médicos" },
-          { icon: PiggyBank, title: "Previdência Privada", desc: "Planeje seu futuro com segurança financeira" }
-        ]
-      }
+      id: 0,
+      title: "Para Você",
+      subtitle: "Pessoais",
+      description: "Proteção completa para você e sua família viverem com tranquilidade.",
+      icon: Users,
+      color: "text-cyan",
+      bgIcon: "bg-cyan",
+      hoverBorder: "hover:border-cyan", 
+      shadow: "shadow-cyan/20",
+      features: [
+        { icon: Heart, text: "Vida e Acidentes" },
+        { icon: Stethoscope, text: "Saúde e Odonto" },
+        { icon: Home, text: "Residencial" },
+        { icon: Plane, text: "Viagem" },
+        { icon: PiggyBank, text: "Previdência" }
+      ]
     },
     {
-      title: "Seguros Empresariais",
-      description: "Soluções sob medida para proteger seu negócio, funcionários e patrimônio empresarial.",
-      icon: liabilityIcon,
-      color: "bg-purple",
-      details: [
-        "Seguro Empresarial",
-        "Responsabilidade Civil",
-        "Seguro de Frota",
-        "Seguro de Carga",
-        "Riscos de Engenharia",
-        "Seguro Garantia",
-        "D&O (Diretores)",
-        "Cyber Risks"
-      ],
-      expandedContent: {
-        description: "Proteja sua empresa com soluções completas que garantem a continuidade do seu negócio.",
-        coverages: [
-          { icon: Building, title: "Seguro Empresarial", desc: "Proteção patrimonial completa para sua empresa" },
-          { icon: Scale, title: "Responsabilidade Civil", desc: "Cobertura para danos causados a terceiros" },
-          { icon: Truck, title: "Seguro de Frota", desc: "Proteção para todos os veículos da empresa" },
-          { icon: FileCheck, title: "Seguro de Carga", desc: "Garanta suas mercadorias durante o transporte" },
-          { icon: HardHat, title: "Riscos de Engenharia", desc: "Cobertura para obras e instalações" },
-          { icon: Briefcase, title: "D&O (Diretores)", desc: "Proteção para executivos e administradores" },
-          { icon: Monitor, title: "Cyber Risks", desc: "Segurança contra ataques cibernéticos" },
-          { icon: Shield, title: "Seguro Garantia", desc: "Garantia de cumprimento contratual" }
-        ]
-      }
+      id: 1,
+      title: "Sua Empresa",
+      subtitle: "Corporativo",
+      description: "Gestão de riscos inteligente para blindar seu patrimônio e operação.",
+      icon: Building,
+      color: "text-primary",
+      bgIcon: "bg-primary",
+      hoverBorder: "hover:border-primary",
+      shadow: "shadow-primary/20",
+      features: [
+        { icon: Factory, text: "Patrimonial" },
+        { icon: Truck, text: "Frota e Cargas" },
+        { icon: Scale, text: "Resp. Civil" },
+        { icon: Monitor, text: "Cyber Risk" },
+        { icon: Briefcase, text: "D&O e E&O" }
+      ]
     },
     {
-      title: "Seguros de Eventos",
-      description: "Segurança e tranquilidade para organizadores de eventos, do planejamento à desmontagem.",
-      icon: eventsIcon,
-      color: "bg-accent",
-      details: [
-        "Cancelamento de Evento",
-        "Responsabilidade Civil",
-        "Acidentes Pessoais",
-        "Equipamentos",
-        "No Show de Artistas",
-        "Cobertura Climática"
-      ],
-      expandedContent: {
-        description: "Somos especialistas em seguros para eventos, oferecendo cobertura completa desde a montagem até a desmontagem.",
-        coverages: [
-          { icon: Calendar, title: "Cancelamento de Evento", desc: "Proteção contra cancelamento por motivos cobertos" },
-          { icon: Scale, title: "Responsabilidade Civil", desc: "Cobertura para danos ao público e terceiros" },
-          { icon: Users, title: "Acidentes Pessoais", desc: "Proteção para equipe técnica e participantes" },
-          { icon: Monitor, title: "Equipamentos", desc: "Cobertura para equipamentos de som, luz e estrutura" },
-          { icon: Shield, title: "No Show de Artistas", desc: "Proteção contra não comparecimento de artistas" },
-          { icon: FileCheck, title: "Cobertura Climática", desc: "Proteção contra intempéries e fenômenos naturais" }
-        ]
-      }
+      id: 2,
+      title: "Seus Eventos",
+      subtitle: "Entretenimento",
+      description: "Segurança líder de mercado, do planejamento à desmontagem.",
+      icon: Calendar,
+      color: "text-accent",
+      bgIcon: "bg-accent",
+      hoverBorder: "hover:border-accent",
+      shadow: "shadow-accent/20",
+      features: [
+        { icon: Calendar, text: "Cancelamento" },
+        { icon: Users, text: "Acidentes" },
+        { icon: Monitor, text: "Equipamentos" },
+        { icon: Scale, text: "Resp. Civil" },
+        { icon: HardHat, text: "Montagem" }
+      ]
     }
   ];
 
-  const toggleService = (index: number) => {
-    setOpenService(openService === index ? null : index);
-  };
-
   return (
-    <section id="servicos" className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-primary rounded-full blur-3xl opacity-5" />
-      <div className="absolute bottom-0 left-0 w-40 md:w-80 h-40 md:h-80 bg-purple rounded-full blur-3xl opacity-5" />
-      
-      <div className="container px-4 md:px-6 relative z-10">
-        <div className={`text-center mb-12 md:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-            <span className="text-gradient">Nossos Serviços</span>
-          </h2>
-          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-            Soluções completas em seguros para pessoas, empresas e eventos. 
-            Encontre a proteção ideal para cada necessidade.
-          </p>
-        </div>
+    <section 
+      id="servicos" 
+      className="h-screen min-h-[700px] flex flex-col justify-center relative overflow-hidden bg-background" 
+      ref={ref}
+    >
+      {/* 1. FUNDO GERAL */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={bgImage} 
+          alt="Background" 
+          className="w-full h-full object-cover opacity-20 dark:opacity-10 mix-blend-multiply dark:mix-blend-normal blur-sm"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-transparent to-background/90" />
+      </div>
 
-        {/* Cards em grid horizontal */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <Card 
-              key={index}
-              className={`overflow-hidden transition-all duration-700 border border-border bg-card ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              } ${openService === index ? 'ring-2 ring-primary' : ''}`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              {/* Gradient top bar */}
-              <div className={`h-1.5 ${service.color}`} />
-              
-              <CardContent className="p-5 md:p-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className={`w-16 md:w-20 h-16 md:h-20 rounded-xl overflow-hidden ring-4 ring-offset-2 ring-offset-card ring-primary/20 mb-4`}>
-                    <img src={service.icon} alt={service.title} className="w-full h-full object-cover" />
-                  </div>
-                  
-                  <h3 className="font-display text-lg md:text-xl font-bold text-card-foreground mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.description}</p>
-                  
-                  <div className="flex flex-wrap justify-center gap-1.5 mb-4">
-                    {service.details.slice(0, 4).map((detail, idx) => (
-                      <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-secondary text-secondary-foreground">
-                        <CheckCircle2 className="w-3 h-3 mr-1 text-accent" />
-                        {detail}
-                      </span>
-                    ))}
-                    {service.details.length > 4 && (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-secondary text-secondary-foreground">
-                        +{service.details.length - 4} mais
-                      </span>
-                    )}
-                  </div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-                  <Button 
-                    variant="outline" 
-                    className="w-full group border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    onClick={() => toggleService(index)}
-                  >
-                    Ver Coberturas
-                    <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-300 ${openService === index ? 'rotate-180' : ''}`} />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Conteúdo expandido abaixo dos cards */}
-        {openService !== null && (
-          <div className="mt-8 animate-fade-in">
-            <Card className="overflow-hidden border border-primary bg-card">
-              <div className={`h-1.5 ${services[openService].color}`} />
-              <CardContent className="p-6 md:p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 rounded-xl overflow-hidden ring-2 ring-primary/20`}>
-                    <img src={services[openService].icon} alt={services[openService].title} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-card-foreground">
-                      {services[openService].title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {services[openService].expandedContent.description}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {services[openService].expandedContent.coverages.map((coverage, idx) => (
-                    <div 
-                      key={idx} 
-                      className="p-4 rounded-xl bg-secondary border border-border hover:border-primary/50 transition-all duration-300 group/item"
-                    >
-                      <div className={`w-10 h-10 rounded-lg ${services[openService].color} flex items-center justify-center mb-3`}>
-                        <coverage.icon className="w-5 h-5 text-primary-foreground" />
-                      </div>
-                      <h4 className="font-semibold text-card-foreground mb-1 group-hover/item:text-primary transition-colors">
-                        {coverage.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {coverage.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 text-center">
-                  <Button 
-                    className="bg-primary text-primary-foreground hover:bg-primary/90"
-                    onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-                  >
-                    Solicitar Cotação
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+      <div className="container px-4 md:px-6 relative z-10 h-full flex flex-col justify-center py-8">
+        
+        {/* HEADER */}
+        <div className={`text-center mb-8 shrink-0 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-secondary/80 border border-border/50 backdrop-blur-sm">
+            <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Nossas Soluções</span>
           </div>
-        )}
+          <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight">
+            Proteção para cada <span className="text-gradient">momento.</span>
+          </h2>
+        </div>
+
+        {/* CONTAINER DOS CARDS */}
+        <div className={`flex flex-col lg:flex-row gap-4 w-full h-[60vh] max-h-[650px] min-h-[500px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+          
+          {services.map((service) => {
+            const isActive = activeId === service.id;
+            const isHovered = hoveredId === service.id;
+            
+            return (
+              <div
+                key={service.id}
+                onClick={() => setActiveId(service.id)}
+                onMouseEnter={() => setHoveredIndex(service.id)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`
+                  relative rounded-3xl border-2 cursor-pointer overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+                  flex flex-col group
+                  ${isActive 
+                    ? `lg:flex-[3] flex-[3] bg-white/95 dark:bg-card/90 border-border/50 shadow-2xl ${service.shadow}` 
+                    : `lg:flex-[1] flex-[1] bg-white/30 dark:bg-card/20 backdrop-blur-md border-white/20 dark:border-white/5 ${service.hoverBorder}`
+                  }
+                  ${isHovered && !isActive ? 'lg:-translate-y-2 lg:bg-white/40' : ''}
+                `}
+              >
+                {/* Marca D'água */}
+                <service.icon 
+                  className={`absolute -right-12 -bottom-12 w-80 h-80 opacity-[0.03] dark:opacity-[0.05] transition-transform duration-700 
+                    ${isActive ? 'scale-100 rotate-0' : 'scale-75 rotate-12'} ${service.color}`} 
+                />
+
+                {/* --- CONTEÚDO DO CARD --- */}
+                <div className="absolute inset-0 p-6 md:p-8 flex flex-col h-full w-full">
+                  
+                  {/* 1. TOPO: Sempre visível (Ícone + Categoria) */}
+                  <div className={`flex items-center gap-4 shrink-0 transition-all duration-500 ${isActive ? 'translate-x-0' : 'justify-center lg:justify-start'}`}>
+                    {/* Ícone */}
+                    <div className={`
+                      rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 shadow-sm
+                      ${isActive 
+                        ? `w-14 h-14 ${service.bgIcon} text-white` 
+                        : `w-10 h-10 bg-white/20 text-foreground group-hover:${service.color}`
+                      }
+                    `}>
+                      <service.icon className={`${isActive ? 'w-7 h-7' : 'w-5 h-5'}`} />
+                    </div>
+
+                    {/* Categoria (Pessoais/Empresarial) */}
+                    <div className={`transition-all duration-500`}>
+                      <p className={`text-xs font-bold uppercase tracking-widest ${isActive ? service.color : 'text-muted-foreground group-hover:text-foreground'}`}>
+                        {service.subtitle}
+                      </p>
+                      {/* Título Principal só aparece aqui se estiver ATIVO */}
+                      <h3 className={`font-bold text-3xl text-foreground whitespace-nowrap leading-none mt-1 transition-all duration-500 ${isActive ? 'opacity-100 max-w-full' : 'opacity-0 max-w-0 hidden'}`}>
+                        {service.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* 2. CENTRO: Título Vertical (Apenas quando FECHADO) */}
+                  {!isActive && (
+                    <div className="hidden lg:flex flex-1 items-center justify-center relative overflow-hidden">
+                      {/* Texto Vertical */}
+                      <div className="rotate-90 origin-center absolute whitespace-nowrap">
+                        <h3 className="text-3xl font-bold text-foreground/60 tracking-tight group-hover:text-foreground transition-colors duration-300">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 3. CENTRO: Conteúdo Expandido (Apenas quando ABERTO) */}
+                  <div className={`flex-1 flex flex-col mt-6 transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 relative' : 'opacity-0 translate-y-4 absolute pointer-events-none'}`}>
+                    
+                    <p className="text-foreground/80 text-lg mb-8 leading-relaxed max-w-lg font-medium">
+                      {service.description}
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-auto w-full">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center gap-3 text-sm font-semibold text-foreground group/item p-2 rounded-lg hover:bg-secondary/50 transition-colors">
+                          <div className={`p-1.5 rounded-full bg-background border border-border group-hover/item:scale-110 transition-transform shadow-sm`}>
+                            <feature.icon className={`w-4 h-4 ${service.color}`} />
+                          </div>
+                          {feature.text}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="pt-6 mt-4 border-t border-border w-full">
+                      <Button 
+                        className={`w-full sm:w-auto h-14 px-8 text-lg font-bold shadow-lg hover:scale-[1.02] transition-all text-white border-0 ${service.bgIcon}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        Solicitar Cotação
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* 4. RODAPÉ: Indicador "Clique para ver" (Apenas quando FECHADO) */}
+                  {!isActive && (
+                    <div className="hidden lg:flex shrink-0 items-center justify-center pt-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                      <div className={`flex flex-col items-center gap-2 ${service.color} animate-pulse`}>
+                        <span className="text-[10px] font-bold uppercase tracking-widest">Clique para ver</span>
+                        <div className={`p-2 rounded-full border border-current bg-white/10`}>
+                           <MousePointerClick className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Seta Mobile (Sempre visível se fechado) */}
+                  {!isActive && (
+                    <div className="lg:hidden absolute right-6 top-1/2 -translate-y-1/2 bg-background/50 p-2 rounded-full border border-border">
+                      <ArrowRight className="w-5 h-5 text-foreground" />
+                    </div>
+                  )}
+
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );
