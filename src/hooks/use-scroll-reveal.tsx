@@ -5,26 +5,26 @@ export const useScrollReveal = (options?: IntersectionObserverInit) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entry.target);
-      }
+      // ATENÇÃO: Esta linha é o segredo.
+      // Se estiver na tela (true), mostra. Se sair (false), esconde.
+      setIsVisible(entry.isIntersecting);
     }, {
-      threshold: 0.1,
+      threshold: 0.1, // Ativa quando 10% do elemento aparece
       ...options,
     });
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
-  }, []);
+  }, [options]); // Removido array vazio para reagir a mudanças de options se necessário
 
   return { ref, isVisible };
 };

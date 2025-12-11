@@ -1,0 +1,89 @@
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import bgImage from "@/assets/coverage-bg.jpg"; // Reutilizando textura para consistência
+
+// Importa automaticamente todas as imagens da pasta clients
+const clientModules = import.meta.glob<{ default: string }>([
+  '/src/assets/clients/*.png',
+  '/src/assets/clients/*.jpg',
+  '/src/assets/clients/*.jpeg',
+  '/src/assets/clients/*.svg',
+  '/src/assets/clients/*.webp',
+  '/src/assets/clients/*.avif'
+], { eager: true });
+
+const clientImages = Object.entries(clientModules)
+  .filter(([path]) => !path.includes('.gitkeep'))
+  .map(([path, module]) => ({
+    src: module.default,
+    name: path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'client'
+  }));
+
+const Portfolio = () => {
+  const { ref, isVisible } = useScrollReveal();
+
+  return (
+    <section 
+      id="clientes" 
+      className="py-20 md:py-32 relative overflow-hidden bg-background" 
+      ref={ref}
+    >
+      {/* BACKGROUND SUTIL */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={bgImage} 
+          alt="Background Texture" 
+          className="w-full h-full object-cover opacity-5 dark:opacity-[0.02] grayscale blur-sm"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background" />
+      </div>
+
+      <div className="container px-4 md:px-6 relative z-10">
+        
+        {/* HEADER */}
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-secondary/50 border border-border/50 backdrop-blur-sm">
+            <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Confiança</span>
+          </div>
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Quem confia na <span className="text-gradient">Ayfa Seguros</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Parceiros que buscam excelência, segurança e atendimento personalizado.
+          </p>
+        </div>
+
+        {/* GRID DE LOGOS */}
+        {clientImages.length > 0 ? (
+          <div 
+            className={`flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          >
+            {clientImages.map((logo, index) => (
+              <div 
+                key={index}
+                className="group relative grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-500 hover:scale-110 cursor-default p-4"
+              >
+                {/* Efeito de brilho atrás do logo no hover */}
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <img 
+                  src={logo.src} 
+                  alt={logo.name}
+                  className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain relative z-10 filter drop-shadow-sm group-hover:drop-shadow-lg transition-all"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-12 border-2 border-dashed border-border rounded-xl bg-secondary/20">
+            <p className="text-center text-muted-foreground">
+              Adicione os logotipos dos clientes na pasta <code className="text-primary font-bold">src/assets/clients/</code>
+            </p>
+          </div>
+        )}
+
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;

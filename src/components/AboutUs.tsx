@@ -1,108 +1,215 @@
-import { Target, Eye, Heart, Shield, Users, Award } from "lucide-react";
+import { Target, Eye, Heart, Shield, Users, Award, CheckCircle, Calendar } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-const AboutUs = () => {
-  const { ref, isVisible } = useScrollReveal();
+// Import da imagem
+import bgImage from "@/assets/about-bg.jpg";
 
+// --- Componente de Animação (Reutilizável) ---
+interface RevealProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const Reveal = ({ children, className = "", delay = 0 }: RevealProps) => {
+  const { ref, isVisible } = useScrollReveal({ threshold: 0.15 });
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`transition-all duration-1000 ease-out transform ${
+        isVisible 
+          ? "opacity-100 translate-y-0 scale-100 blur-0" 
+          : "opacity-0 translate-y-12 scale-95 blur-sm"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
+const AboutUs = () => {
   const values = [
-    { icon: Shield, title: "Confiança", description: "Relações sólidas baseadas em transparência" },
-    { icon: Users, title: "Compromisso", description: "Dedicação total aos nossos clientes" },
-    { icon: Award, title: "Excelência", description: "Qualidade em cada atendimento" },
-    { icon: Heart, title: "Ética", description: "Integridade em todas as ações" },
+    { icon: Shield, title: "Confiança", description: "Relações transparentes" },
+    { icon: Users, title: "Compromisso", description: "Dedicação total" },
+    { icon: Award, title: "Excelência", description: "Qualidade superior" },
+    { icon: Heart, title: "Ética", description: "Integridade nas ações" },
+  ];
+
+  const stats = [
+    { icon: Calendar, value: "15+", label: "Anos de Experiência", color: "text-primary" },
+    { icon: Shield, value: "500+", label: "Eventos Segurados", color: "text-cyan" },
+    { icon: Users, value: "5k+", label: "Vidas Protegidas", color: "text-accent" },
+    { icon: CheckCircle, value: "99%", label: "Satisfação Clientes", color: "text-green-500" },
   ];
 
   return (
-    <section id="quem-somos" className="py-16 md:py-24 lg:py-32 bg-secondary relative overflow-hidden" ref={ref}>
-      {/* Background decorations */}
-      <div className="absolute top-20 left-0 w-48 md:w-80 h-48 md:h-80 bg-primary rounded-full blur-3xl" style={{ opacity: 0.05 }} />
-      <div className="absolute bottom-20 right-0 w-40 md:w-72 h-40 md:h-72 bg-accent rounded-full blur-3xl" style={{ opacity: 0.05 }} />
+    <section 
+      id="quem-somos" 
+      className="min-h-screen flex flex-col pt-32 md:pt-40 pb-20 relative overflow-hidden bg-secondary/5" 
+    >
+      {/* 1. IMAGEM DE FUNDO */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={bgImage} 
+          alt="Background Texture" 
+          className="w-full h-full object-cover object-[center_20%] md:object-[80%_center] opacity-60 dark:opacity-40 mix-blend-multiply dark:mix-blend-normal transition-all duration-1000"
+        />
+        
+        {/* Overlay Gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/20 to-transparent" />
+      </div>
+
+      {/* 2. TEXTURA E LUZ AMBIENTE */}
+      <div className="absolute inset-0 z-0 opacity-[0.04] mix-blend-overlay" 
+           style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
+      </div>
+
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-40">
+        <div className="absolute top-[10%] right-[10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-cyan/10 rounded-full blur-[100px]" />
+      </div>
       
       <div className="container px-4 md:px-6 relative z-10">
-        {/* Header */}
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-            <span className="text-gradient">Quem Somos</span>
-          </h2>
-          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-            Somos uma corretora de seguros comprometida em oferecer as melhores soluções 
-            de proteção para você, sua família e seu negócio.
-          </p>
-        </div>
+        
+        {/* LAYOUT PRINCIPAL */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 md:mb-24">
+          
+          {/* Lado Esquerdo - Texto */}
+          <div>
+            <div className="relative">
+              <div className="space-y-8 relative">
+                
+                <Reveal>
+                  <div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="h-px w-8 bg-cyan"></div>
+                      <span className="text-cyan font-bold tracking-widest text-xs uppercase">Sobre a Corretora</span>
+                    </div>
+                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground drop-shadow-sm">
+                      Mais que seguros,<br />
+                      <span className="text-gradient">Proteção para a vida.</span>
+                    </h2>
+                  </div>
+                </Reveal>
+                
+                <Reveal delay={200}>
+                  {/* AJUSTE: Dark Mode agora usa dark:bg-black/30 (mais vidro) */}
+                  <div className="relative p-6 -ml-2 rounded-2xl bg-white/60 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-sm transition-all hover:bg-white/70 dark:hover:bg-black/40">
+                    <p className="text-muted-foreground text-lg leading-relaxed border-l-4 border-primary/50 pl-5">
+                      A <strong className="text-primary font-bold">AYFA Seguros</strong> combina tecnologia de ponta e atendimento humanizado. 
+                      Não vendemos apenas apólices; entregamos a certeza de que seu patrimônio, 
+                      sua família e seus negócios estão blindados contra qualquer imprevisto.
+                    </p>
+                  </div>
+                </Reveal>
 
-        {/* About text */}
-        <div className={`max-w-4xl mx-auto mb-12 md:mb-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-card border border-border rounded-2xl p-6 md:p-10 shadow-elegant">
-            <p className="text-base md:text-lg text-card-foreground leading-relaxed mb-4">
-              A <strong className="text-primary">AYFA Seguros</strong> é uma corretora de seguros especializada em oferecer 
-              soluções personalizadas para diversos segmentos do mercado. Com uma equipe experiente e 
-              comprometida, trabalhamos para garantir a melhor proteção para nossos clientes.
-            </p>
-            <p className="text-base md:text-lg text-card-foreground leading-relaxed">
-              Atuamos com as principais seguradoras do mercado, oferecendo uma ampla gama de produtos 
-              que incluem seguros pessoais, empresariais, patrimoniais e muito mais. Nossa missão é 
-              proporcionar tranquilidade e segurança através de um atendimento personalizado e soluções 
-              sob medida para cada necessidade.
-            </p>
-          </div>
-        </div>
+                <Reveal delay={400}>
+                  <div className="flex flex-wrap gap-4 pt-2">
+                    {/* AJUSTE: Sombras coloridas sutis nos badges */}
+                    <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm shadow-primary/5 hover:border-primary/30 transition-colors">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-sm font-semibold text-foreground">Atendimento Humanizado</span>
+                    </div>
+                    <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm shadow-cyan/5 hover:border-cyan/30 transition-colors">
+                      <CheckCircle className="w-4 h-4 text-cyan" />
+                      <span className="text-sm font-semibold text-foreground">Cobertura Nacional</span>
+                    </div>
+                  </div>
+                </Reveal>
 
-        {/* Mission and Vision */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
-          {/* Missão */}
-          <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 h-full shadow-card">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-primary rounded-xl flex items-center justify-center">
-                  <Target className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
-                </div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-card-foreground">Missão</h3>
               </div>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                Oferecer soluções em seguros com excelência, proporcionando tranquilidade e segurança 
-                aos nossos clientes através de um atendimento personalizado, transparente e comprometido 
-                com a proteção do que é mais importante para você.
-              </p>
             </div>
           </div>
 
-          {/* Visão */}
-          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 h-full shadow-card">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-purple rounded-xl flex items-center justify-center">
-                  <Eye className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
+          {/* Lado Direito - Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            
+            {/* Card Missão */}
+            <Reveal delay={200}>
+              {/* AJUSTE: Sombra Azul Escura (primary) e fundo dark mais leve (black/30) */}
+              <div className="bg-white/60 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/10 p-6 rounded-2xl group hover:border-primary/40 transition-all duration-500 shadow-lg shadow-primary/10 hover:shadow-primary/30 hover:-translate-y-1 hover:bg-white/70 dark:hover:bg-black/40 h-full">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 border border-primary/10">
+                  <Target className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-card-foreground">Visão</h3>
+                <h3 className="font-bold text-xl mb-2 text-foreground">Missão</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Oferecer excelência e tranquilidade através de um atendimento transparente.
+                </p>
               </div>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                Ser reconhecida como uma corretora de seguros de referência no mercado, destacando-se 
-                pela confiança, inovação e qualidade no atendimento, tornando-nos a primeira escolha 
-                dos clientes quando o assunto é proteção e segurança.
-              </p>
+            </Reveal>
+
+            {/* Card Visão */}
+            <Reveal delay={400}>
+              {/* AJUSTE: Sombra Ciano e fundo dark mais leve (black/30) */}
+              <div className="bg-white/60 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/10 p-6 rounded-2xl group hover:border-cyan/40 transition-all duration-500 shadow-lg shadow-cyan/10 hover:shadow-cyan/30 hover:-translate-y-1 hover:bg-white/70 dark:hover:bg-black/40 h-full">
+                <div className="w-12 h-12 bg-gradient-to-br from-cyan/20 to-cyan/5 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 border border-cyan/10">
+                  <Eye className="w-6 h-6 text-cyan" />
+                </div>
+                <h3 className="font-bold text-xl mb-2 text-foreground">Visão</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Ser referência nacional em inovação no mercado de seguros.
+                </p>
+              </div>
+            </Reveal>
+
+            {/* Card Valores (Centralizado) */}
+            <div className="col-span-1 md:col-span-2">
+              <Reveal delay={600}>
+                {/* AJUSTE: Sombra Accent (Azul Royal) e Gradiente Dark Transparente */}
+                <div className="bg-gradient-to-br from-white/60 to-white/30 dark:from-black/40 dark:to-black/10 backdrop-blur-xl border border-white/30 dark:border-white/10 p-8 rounded-2xl shadow-xl shadow-accent/10 transition-all duration-500 hover:shadow-accent/25 hover:border-accent/30 hover:from-white/70 hover:to-white/40 dark:hover:from-black/50 dark:hover:to-black/20">
+                  <h3 className="font-bold text-xl mb-8 text-foreground flex items-center justify-center gap-3">
+                    <div className="p-1.5 bg-accent/10 rounded-lg">
+                      <Heart className="w-5 h-5 text-accent fill-accent/20" /> 
+                    </div>
+                    Nossos Valores
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {values.map((value, index) => (
+                      <div key={index} className="group/item">
+                        <div className="flex flex-col items-center text-center gap-3">
+                          {/* Ícone com fundo bem leve */}
+                          <div className="p-2.5 w-fit bg-white/40 dark:bg-white/5 rounded-xl shadow-sm border border-white/20 dark:border-white/5 group-hover/item:border-accent/50 group-hover/item:text-accent transition-all duration-300">
+                            <value.icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-sm text-foreground">{value.title}</h4>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
             </div>
+
           </div>
         </div>
 
-        {/* Valores */}
-        <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10">
-            <span className="text-gradient-warm">Nossos Valores</span>
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {values.map((value, index) => (
-              <div 
-                key={index}
-                className="bg-card border border-border rounded-xl p-4 md:p-6 text-center hover:border-primary hover:-translate-y-1 transition-all duration-300 group shadow-card"
-              >
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-accent rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:scale-110 transition-transform">
-                  <value.icon className="w-6 h-6 md:w-7 md:h-7 text-accent-foreground" />
+        {/* RODAPÉ DE ESTATÍSTICAS */}
+        <div className="relative">
+          <Reveal delay={800}>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-12 opacity-50" />
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex flex-col items-center text-center group cursor-default">
+                  {/* Ícones com fundo translúcido */}
+                  <div className={`p-4 rounded-2xl bg-white/40 dark:bg-white/5 backdrop-blur-sm border border-transparent group-hover:border-${stat.color.split('-')[1]}/20 mb-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white/60 dark:group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-${stat.color.split('-')[1]}/10`}>
+                    <stat.icon className={`w-8 h-8 ${stat.color} drop-shadow-sm`} />
+                  </div>
+                  <span className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-1">{stat.value}</span>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-80">
+                    {stat.label}
+                  </p>
                 </div>
-                <h4 className="font-semibold text-card-foreground mb-1 md:mb-2 text-sm md:text-base">{value.title}</h4>
-                <p className="text-muted-foreground text-xs md:text-sm">{value.description}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
+
       </div>
     </section>
   );

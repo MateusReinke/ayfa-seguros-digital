@@ -16,8 +16,11 @@
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
-    --accent: 24 95% 53%;
+    
+    /* MUDANÇA: Laranja para Azul Royal */
+    --accent: 221 83% 53%; 
     --accent-foreground: 0 0% 100%;
+    
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 214 32% 91%;
@@ -30,16 +33,25 @@
     --magenta: 320 85% 45%;
     --lime: 85 75% 45%;
     --purple: 265 85% 50%;
-    --gold: 45 95% 50%;
+    
+    /* MUDANÇA: Dourado para Azul Ciano/Claro */
+    --gold: 199 89% 48%;
+    
     --teal: 175 75% 35%;
     
     --gradient-primary: linear-gradient(135deg, hsl(222 84% 25%) 0%, hsl(222 84% 18%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(24 95% 53%) 0%, hsl(18 95% 48%) 100%);
+    
+    /* MUDANÇA: Gradiente de destaque agora é Azul -> Ciano */
+    --gradient-accent: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(199 89% 48%) 100%);
+    
     --gradient-hero: linear-gradient(135deg, hsl(222 84% 20%) 0%, hsl(222 84% 12%) 100%);
     --gradient-soft: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(0 0% 100%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 99%) 100%);
     --shadow-elegant: 0 20px 60px -15px hsl(222 84% 25% / 0.15);
-    --shadow-glow: 0 0 60px hsl(24 95% 53% / 0.25);
+    
+    /* MUDANÇA: Sombra brilhante agora é azul */
+    --shadow-glow: 0 0 60px hsl(221 83% 53% / 0.25);
+    
     --shadow-card: 0 4px 24px -4px hsl(222 84% 25% / 0.08);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --sidebar-background: 0 0% 98%;
@@ -65,8 +77,11 @@
     --secondary-foreground: 210 40% 98%;
     --muted: 222 47% 14%;
     --muted-foreground: 215 20% 65%;
-    --accent: 25 95% 55%;
+    
+    /* MUDANÇA: Accent Dark para Azul Vibrante */
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
+    
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 222 47% 20%;
@@ -78,20 +93,32 @@
     --magenta: 320 90% 55%;
     --lime: 85 85% 50%;
     --purple: 265 90% 60%;
-    --gold: 45 100% 55%;
+    
+    /* MUDANÇA: Gold Dark para Ciano Vibrante */
+    --gold: 190 90% 50%;
+    
     --teal: 175 85% 45%;
     
     --gradient-primary: linear-gradient(135deg, hsl(200 85% 55%) 0%, hsl(222 84% 35%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(25 95% 55%) 0%, hsl(45 100% 55%) 100%);
+    
+    /* MUDANÇA: Gradient Accent Dark */
+    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(190 90% 50%) 100%);
+    
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 12%) 0%, hsl(222 47% 8%) 100%);
     --gradient-soft: linear-gradient(180deg, hsl(222 47% 10%) 0%, hsl(222 47% 8%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(222 47% 14%) 0%, hsl(222 47% 12%) 100%);
     --gradient-vibrant: linear-gradient(135deg, hsl(200 85% 55%) 0%, hsl(265 70% 50%) 100%);
-    --gradient-warm: linear-gradient(135deg, hsl(25 95% 55%) 0%, hsl(45 100% 55%) 100%);
+    
+    /* MUDANÇA: Warm agora usa tons de azul também para manter consistência */
+    --gradient-warm: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(190 90% 50%) 100%);
+    
     --gradient-cool: linear-gradient(135deg, hsl(185 95% 50%) 0%, hsl(200 85% 55%) 100%);
     
     --shadow-elegant: 0 20px 60px -15px hsl(0 0% 0% / 0.4);
-    --shadow-glow: 0 0 60px hsl(25 95% 55% / 0.3);
+    
+    /* MUDANÇA: Shadow Glow Dark */
+    --shadow-glow: 0 0 60px hsl(217 91% 60% / 0.3);
+    
     --shadow-purple: 0 0 40px hsl(265 90% 60% / 0.25);
     --shadow-cyan: 0 0 40px hsl(185 95% 50% / 0.25);
     
@@ -186,6 +213,7 @@
     background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--cyan)) 100%);
   }
 
+  /* Mantive o nome da classe para compatibilidade, mas a cor agora é Azul */
   .text-gradient-warm {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--gold)) 100%);
