@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
+# Ayfa Seguros Digital
 
-## Project info
+Landing page institucional da Ayfa Seguros, construída com React + Vite + TypeScript.
 
-**URL**: https://lovable.dev/projects/727472f6-a6d0-4d6e-b1f2-70502634f76d
+## Stack
 
-## How can I edit this code?
+- React 18
+- Vite 5
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
-There are several ways of editing your application.
+## Desenvolvimento local
 
-**Use Lovable**
+Pré-requisitos:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/727472f6-a6d0-4d6e-b1f2-70502634f76d) and start prompting.
+- Node.js 20+
+- npm
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Aplicação em modo desenvolvimento: `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build de produção
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deploy com Docker (Coolify)
 
-## What technologies are used for this project?
+Este projeto está preparado com `Dockerfile` multi-stage e Nginx para servir o build estático.
 
-This project is built with:
+### Build local da imagem
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+docker build -t ayfa-seguros-digital .
+```
 
-## How can I deploy this project?
+### Rodar localmente
 
-Simply open [Lovable](https://lovable.dev/projects/727472f6-a6d0-4d6e-b1f2-70502634f76d) and click on Share -> Publish.
+```bash
+docker run --rm -p 8080:80 ayfa-seguros-digital
+```
 
-## Can I connect a custom domain to my Lovable project?
+Abra: `http://localhost:8080`.
 
-Yes, you can!
+### Publicar no Coolify
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. No Coolify, escolha **New Resource > Application**.
+2. Conecte o repositório Git deste projeto.
+3. Em **Build Pack**, selecione **Dockerfile**.
+4. Mantenha a porta interna como `80`.
+5. Faça o deploy.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+> Como o app é SPA, o Nginx já está configurado com fallback para `index.html`.
