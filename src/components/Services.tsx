@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { 
   Users, Building, Briefcase, Calendar, Truck, 
@@ -11,6 +12,7 @@ import bgImage from "@/assets/about-bg.jpg";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
+  const isMobile = useIsMobile();
   const [activeId, setActiveId] = useState<number>(1);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
@@ -103,13 +105,13 @@ const Services = () => {
         <div className={`flex flex-col lg:flex-row gap-4 w-full lg:min-h-[520px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           
           {services.map((service) => {
-            const isActive = activeId === service.id;
+            const isActive = isMobile || activeId === service.id;
             const isHovered = hoveredId === service.id;
             
             return (
               <div
                 key={service.id}
-                onClick={() => setActiveId(service.id)}
+                onClick={() => !isMobile && setActiveId(service.id)}
                 onMouseEnter={() => setHoveredId(service.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 className={`
@@ -120,7 +122,7 @@ const Services = () => {
                     : `lg:flex-[1] flex-[1] bg-white/30 dark:bg-card/20 backdrop-blur-md border-white/20 dark:border-white/5 ${service.hoverBorder}`
                   }
                   ${isHovered && !isActive ? 'lg:-translate-y-2 lg:bg-white/40' : ''}
-                  ${isActive ? 'min-h-[440px] lg:min-h-0' : 'min-h-[170px] lg:min-h-0'}
+                  ${isActive ? 'min-h-[360px] lg:min-h-0' : 'min-h-[140px] lg:min-h-0'}
                 `}
               >
                 {/* Marca D'água */}
@@ -130,7 +132,7 @@ const Services = () => {
                 />
 
                 {/* --- CONTEÚDO DO CARD --- */}
-                <div className="absolute inset-0 p-6 md:p-8 flex flex-col h-full w-full">
+                <div className="relative p-6 md:p-8 flex flex-col h-full w-full">
                   
                   {/* 1. TOPO: Sempre visível (Ícone + Categoria) */}
                   <div className={`flex items-center gap-4 shrink-0 transition-all duration-500 ${isActive ? 'translate-x-0' : 'justify-center lg:justify-start'}`}>
