@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { 
-  Shield, Users, Lightbulb, CalendarX, 
-  AlertTriangle, Play, CheckCircle2, ArrowRight 
+  Shield, Users, Lightbulb, Play, CheckCircle2, ArrowRight 
 } from "lucide-react";
 
 import bgImage from "@/assets/coverage-bg.jpg"; 
@@ -15,66 +14,31 @@ const Coverage = () => {
   const coverages = [
     {
       id: 0,
-      title: "Responsabilidade Civil",
-      subtitle: "Proteção Legal",
+      title: "Responsabilidade Civil Eventos",
+      subtitle: "Proteção financeira para o organizador contra reclamações de terceiros",
       icon: Shield,
       color: "text-cyan",
       bg: "bg-cyan",
       border: "border-cyan",
-      // Sombra mais forte no modo claro (shadow-lg) e colorida no escuro
       shadow: "shadow-lg shadow-cyan/10 dark:shadow-cyan/25",
       gradient: "from-cyan/10 to-transparent",
       details: [
-        "RC Organizador e Cruzada",
+        "RC Organizador",
         "RC Instalação e Montagem",
-        "RC Danos Morais e Tumultos",
-        "RC Fornecimento de Bebidas",
-        "RC Guarda de Veículos"
+        "RC Cruzada",
+        "RC Artistas",
+        "RC Fornecimento de Alimentos e Bebidas",
+        "RC Imóvel",
+        "RC Empregador",
+        "Lucros Cessantes",
+        "Danos Morais"
       ],
-      description: "A cobertura mais abrangente do mercado. Protege o organizador contra reclamações e processos de terceiros."
+      description: "Proteção financeira para o organizador contra reclamações de terceiros."
     },
     {
       id: 1,
-      title: "Acidentes Pessoais",
-      subtitle: "Staff e Público",
-      icon: Users,
-      color: "text-green-600 dark:text-green-500",
-      bg: "bg-green-600 dark:bg-green-500",
-      border: "border-green-600 dark:border-green-500",
-      shadow: "shadow-lg shadow-green-600/10 dark:shadow-green-500/25",
-      gradient: "from-green-500/10 to-transparent",
-      details: [
-        "Morte Acidental e Invalidez",
-        "Despesas Médicas (DMH)",
-        "Cobertura para Público",
-        "Cobertura para Staff (24h)",
-        "Adicional de Traslado"
-      ],
-      description: "Segurança total para todas as vidas envolvidas no evento, garantindo atendimento médico rápido."
-    },
-    {
-      id: 2,
-      title: "Cancelamento & No-Show",
-      subtitle: "Riscos Financeiros",
-      icon: CalendarX,
-      color: "text-red-600 dark:text-red-500",
-      bg: "bg-red-600 dark:bg-red-500",
-      border: "border-red-600 dark:border-red-500",
-      shadow: "shadow-lg shadow-red-600/10 dark:shadow-red-500/25",
-      gradient: "from-red-500/10 to-transparent",
-      details: [
-        "Ausência de Artista (No-Show)",
-        "Condições Climáticas",
-        "Interrupção ou Adiamento",
-        "Problemas no local",
-        "Perdas de despesas"
-      ],
-      description: "Proteção do capital investido. Reembolso das despesas caso o evento não possa ocorrer por força maior."
-    },
-    {
-      id: 3,
-      title: "Bens e Equipamentos",
-      subtitle: "Material Técnico",
+      title: "Riscos Diversos",
+      subtitle: "Proteção contra danos materiais para itens alugados",
       icon: Lightbulb,
       color: "text-yellow-600 dark:text-yellow-500",
       bg: "bg-yellow-600 dark:bg-yellow-500",
@@ -82,32 +46,29 @@ const Coverage = () => {
       shadow: "shadow-lg shadow-yellow-600/10 dark:shadow-yellow-500/25",
       gradient: "from-yellow-500/10 to-transparent",
       details: [
-        "Som, Luz e Painéis de LED",
-        "Equipamentos de Filmagem",
-        "Estruturas e Tendas",
-        "Geradores e Transformadores",
-        "Danos Elétricos e Roubo"
+        "Equipamentos para Realização do Evento",
+        "Marquises Temporárias",
+        "Cenografia e Decoração",
+        "Equipamentos em Exposição"
       ],
-      description: "Cobertura 'All Risks' para todo o aparato tecnológico e cenográfico alocado no evento."
+      description: "Proteção contra danos materiais para itens alugados para realização do evento."
     },
     {
-      id: 4,
-      title: "Riscos Específicos",
-      subtitle: "Adicionais",
-      icon: AlertTriangle,
-      color: "text-purple-600 dark:text-purple-500",
-      bg: "bg-purple-600 dark:bg-purple-500",
-      border: "border-purple-600 dark:border-purple-500",
-      shadow: "shadow-lg shadow-purple-600/10 dark:shadow-purple-500/25",
-      gradient: "from-purple-500/10 to-transparent",
+      id: 2,
+      title: "Acidentes Pessoais",
+      subtitle: "Proteção para as vidas envolvidas no evento",
+      icon: Users,
+      color: "text-green-600 dark:text-green-500",
+      bg: "bg-green-600 dark:bg-green-500",
+      border: "border-green-600 dark:border-green-500",
+      shadow: "shadow-lg shadow-green-600/10 dark:shadow-green-500/25",
+      gradient: "from-green-500/10 to-transparent",
       details: [
-        "Danos ao Local (Imóvel)",
-        "Responsabilidade Civil Fogos",
-        "Prêmios e Sorteios",
-        "Objetos em Exposição",
-        "RC Empregador"
+        "Morte Acidental",
+        "Invalidez Permanente e/ou Parcial por Acidente",
+        "Despesas Médicas, Hospitalares e Odontológicas"
       ],
-      description: "Cláusulas especiais desenhadas para atender as particularidades mais complexas do seu projeto."
+      description: "Proteção para as vidas envolvidas no evento."
     }
   ];
 
@@ -116,7 +77,7 @@ const Coverage = () => {
   return (
     <section 
       id="cobertura" 
-      className="h-screen min-h-[700px] flex flex-col justify-center relative overflow-hidden bg-gray-50 dark:bg-background pt-24 pb-8 transition-colors duration-500" 
+      className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-gray-50 dark:bg-background py-20 md:py-24 transition-colors duration-500" 
       ref={ref}
     >
       {/* 1. FUNDO GERAL */}
@@ -130,7 +91,7 @@ const Coverage = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/80 to-white/40 dark:from-background dark:via-background/80 dark:to-background/30" />
       </div>
 
-      <div className="container px-4 md:px-6 relative z-10 h-full flex flex-col justify-center">
+      <div className="container px-4 md:px-6 relative z-10 flex flex-col justify-center">
         
         {/* HEADER */}
         <div className={`text-left mb-6 shrink-0 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -139,16 +100,15 @@ const Coverage = () => {
             <span className="text-xs font-bold uppercase tracking-widest text-cyan-700 dark:text-cyan">Cobertura Técnica</span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight max-w-2xl text-gray-900 dark:text-white">
-            Segurança detalhada <br />
-            <span className="text-gray-500 dark:text-muted-foreground">ponto a ponto.</span>
+            Proteção detalhada.
           </h2>
         </div>
 
         {/* LAYOUT SPLIT */}
-        <div className={`flex flex-col lg:flex-row gap-6 lg:gap-12 w-full h-[60vh] max-h-[600px] min-h-[500px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className={`flex flex-col lg:flex-row gap-6 lg:gap-12 w-full transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           
           {/* ESQUERDA: MENU DE NAVEGAÇÃO */}
-          <div className="lg:w-1/3 flex flex-col gap-3 h-full overflow-y-auto pr-2 scrollbar-hide">
+          <div className="lg:w-1/3 flex flex-col gap-3 lg:max-h-[560px] lg:overflow-y-auto lg:pr-2 scrollbar-hide">
             {coverages.map((item, index) => (
               <button
                 key={index}
@@ -204,13 +164,13 @@ const Coverage = () => {
           </div>
 
           {/* DIREITA: CARD DE DETALHES */}
-          <div className="lg:w-2/3 h-full relative group perspective-1000">
+          <div className="lg:w-2/3 relative group perspective-1000">
             
             <div className={`absolute inset-0 bg-gradient-to-br ${activeContent.gradient} opacity-20 blur-3xl transition-all duration-700`} />
 
             {/* CARD PRINCIPAL - Fundo Branco Sólido no Claro */}
             <div className={`
-              relative h-full w-full rounded-[2rem] flex flex-col transition-all duration-500
+              relative w-full rounded-[2rem] flex flex-col transition-all duration-500
               p-6 md:p-8 
               bg-white/90 dark:bg-black/60 backdrop-blur-xl 
               border border-gray-200/60 dark:border-white/10 
