@@ -77,7 +77,7 @@ const Coverage = () => {
   return (
     <section 
       id="cobertura" 
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-gray-50 dark:bg-background py-20 md:py-24 transition-colors duration-500" 
+      className="min-h-[100svh] lg:min-h-[calc(100svh-6rem)] flex flex-col justify-center relative overflow-hidden bg-gray-50 dark:bg-background py-14 md:py-16 transition-colors duration-500" 
       ref={ref}
     >
       {/* 1. FUNDO GERAL */}

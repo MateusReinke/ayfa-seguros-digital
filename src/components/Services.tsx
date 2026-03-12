@@ -73,7 +73,7 @@ const Services = () => {
   return (
     <section 
       id="servicos" 
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-background py-16 md:py-20" 
+      className="min-h-[100svh] lg:min-h-[calc(100svh-6rem)] flex flex-col justify-center relative overflow-hidden bg-background py-14 md:py-16" 
       ref={ref}
     >
       {/* 1. FUNDO GERAL */}

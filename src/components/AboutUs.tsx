@@ -41,7 +41,7 @@ const AboutUs = () => {
   return (
     <section 
       id="quem-somos" 
-      className="min-h-screen flex flex-col pt-32 md:pt-40 pb-20 relative overflow-hidden bg-secondary/5" 
+      className="min-h-[100svh] lg:min-h-[calc(100svh-6rem)] flex flex-col justify-center pt-24 md:pt-28 lg:pt-20 pb-14 md:pb-16 relative overflow-hidden bg-secondary/5" 
     >
       {/* 1. IMAGEM DE FUNDO */}
       <div className="absolute inset-0 z-0">
@@ -69,7 +69,7 @@ const AboutUs = () => {
       <div className="container px-4 md:px-6 relative z-10">
         
         {/* LAYOUT PRINCIPAL */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 md:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12 md:mb-16">
           
           {/* Lado Esquerdo - Texto */}
           <div>
