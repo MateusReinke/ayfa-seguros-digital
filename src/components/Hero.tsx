@@ -8,7 +8,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
+    <section id="hero" className="relative min-h-[100svh] flex items-center justify-center overflow-x-hidden pt-20 md:pt-24 pb-10 md:pb-16">
       {/* Background Image with Overlay adjustment */}
       <div 
         className="absolute inset-0 z-0"
@@ -27,7 +27,7 @@ const Hero = () => {
       <div className="absolute bottom-20 left-4 md:left-20 w-28 md:w-80 h-28 md:h-80 bg-gold rounded-full blur-3xl opacity-15" />
 
       {/* Content Container */}
-      <div className="container relative z-10 px-4 md:px-6 py-12 md:py-20 lg:py-32">
+      <div className="container relative z-10 px-4 md:px-6 py-8 md:py-12 lg:py-20">
         <div className="max-w-5xl mx-auto text-center">
           
           {/* Logo */}

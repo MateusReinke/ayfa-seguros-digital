@@ -36,7 +36,7 @@ const Portfolio = () => {
   return (
     <section 
       id="portfolio" 
-      className="min-h-[700px] flex flex-col justify-center relative overflow-hidden bg-background py-20" 
+      className="min-h-screen flex flex-col justify-center relative overflow-x-hidden bg-background py-16 md:py-20" 
       ref={ref}
     >
       {/* BACKGROUND */}

@@ -20,7 +20,10 @@ const Navigation = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const navHeight = window.innerWidth >= 1024 ? 96 : 72;
+      const elementTop = element.getBoundingClientRect().top + window.scrollY;
+      const top = Math.max(elementTop - navHeight, 0);
+      window.scrollTo({ top, behavior: "smooth" });
       setIsOpen(false);
     }
   };
