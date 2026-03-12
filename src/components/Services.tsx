@@ -71,7 +71,7 @@ const Services = () => {
   return (
     <section 
       id="servicos" 
-      className="h-screen min-h-[700px] flex flex-col justify-center relative overflow-hidden bg-background" 
+      className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-background py-16 md:py-20" 
       ref={ref}
     >
       {/* 1. FUNDO GERAL */}
@@ -87,7 +87,7 @@ const Services = () => {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container px-4 md:px-6 relative z-10 h-full flex flex-col justify-center py-8">
+      <div className="container px-4 md:px-6 relative z-10 flex flex-col justify-center">
         
         {/* HEADER */}
         <div className={`text-center mb-8 shrink-0 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -100,7 +100,7 @@ const Services = () => {
         </div>
 
         {/* CONTAINER DOS CARDS */}
-        <div className={`flex flex-col lg:flex-row gap-4 w-full h-[60vh] max-h-[650px] min-h-[500px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className={`flex flex-col lg:flex-row gap-4 w-full lg:min-h-[520px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           
           {services.map((service) => {
             const isActive = activeId === service.id;
@@ -120,6 +120,7 @@ const Services = () => {
                     : `lg:flex-[1] flex-[1] bg-white/30 dark:bg-card/20 backdrop-blur-md border-white/20 dark:border-white/5 ${service.hoverBorder}`
                   }
                   ${isHovered && !isActive ? 'lg:-translate-y-2 lg:bg-white/40' : ''}
+                  ${isActive ? 'min-h-[440px] lg:min-h-0' : 'min-h-[170px] lg:min-h-0'}
                 `}
               >
                 {/* Marca D'água */}

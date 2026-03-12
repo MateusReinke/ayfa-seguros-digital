@@ -77,7 +77,7 @@ const Coverage = () => {
   return (
     <section 
       id="cobertura" 
-      className="h-screen min-h-[700px] flex flex-col justify-center relative overflow-hidden bg-gray-50 dark:bg-background pt-24 pb-8 transition-colors duration-500" 
+      className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-gray-50 dark:bg-background py-20 md:py-24 transition-colors duration-500" 
       ref={ref}
     >
       {/* 1. FUNDO GERAL */}
@@ -91,7 +91,7 @@ const Coverage = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/80 to-white/40 dark:from-background dark:via-background/80 dark:to-background/30" />
       </div>
 
-      <div className="container px-4 md:px-6 relative z-10 h-full flex flex-col justify-center">
+      <div className="container px-4 md:px-6 relative z-10 flex flex-col justify-center">
         
         {/* HEADER */}
         <div className={`text-left mb-6 shrink-0 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -105,10 +105,10 @@ const Coverage = () => {
         </div>
 
         {/* LAYOUT SPLIT */}
-        <div className={`flex flex-col lg:flex-row gap-6 lg:gap-12 w-full h-[60vh] max-h-[600px] min-h-[500px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className={`flex flex-col lg:flex-row gap-6 lg:gap-12 w-full lg:min-h-[520px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           
           {/* ESQUERDA: MENU DE NAVEGAÇÃO */}
-          <div className="lg:w-1/3 flex flex-col gap-3 h-full overflow-y-auto pr-2 scrollbar-hide">
+          <div className="lg:w-1/3 flex flex-col gap-3 lg:max-h-[520px] overflow-y-auto pr-2 scrollbar-hide">
             {coverages.map((item, index) => (
               <button
                 key={index}
@@ -164,13 +164,13 @@ const Coverage = () => {
           </div>
 
           {/* DIREITA: CARD DE DETALHES */}
-          <div className="lg:w-2/3 h-full relative group perspective-1000">
+          <div className="lg:w-2/3 min-h-[420px] lg:min-h-0 relative group perspective-1000">
             
             <div className={`absolute inset-0 bg-gradient-to-br ${activeContent.gradient} opacity-20 blur-3xl transition-all duration-700`} />
 
             {/* CARD PRINCIPAL - Fundo Branco Sólido no Claro */}
             <div className={`
-              relative h-full w-full rounded-[2rem] flex flex-col transition-all duration-500
+              relative h-full w-full rounded-[2rem] flex flex-col transition-all duration-500 min-h-[420px]
               p-6 md:p-8 
               bg-white/90 dark:bg-black/60 backdrop-blur-xl 
               border border-gray-200/60 dark:border-white/10 
