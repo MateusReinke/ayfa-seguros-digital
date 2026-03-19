@@ -15,27 +15,23 @@ const FAQ = () => {
     },
     {
       question: "Quanto tempo leva para receber um orçamento?",
-      answer: "Nosso compromisso é retornar orçamentos em até 6 horas após o recebimento de todas as informações necessárias."
+      answer: "Nosso compromisso é retornar orçamentos em até 4 horas após o recebimento de todas as informações necessárias."
     },
     {
       question: "Quais tipos de eventos são cobertos?",
-      answer: "Cobrimos feiras, exposições, shows, musicais, eventos corporativos, congressos, convenções, eventos esportivos, culturais, formaturas, casamentos e muito mais."
+      answer: "Cobrimos feiras, exposições, shows, musicais, eventos corporativos, congressos, convenções, eventos esportivos, culturais, formaturas, sociais e muito mais."
     },
     {
-      question: "É possível parcelar o pagamento?",
-      answer: "Sim! Oferecemos flexibilidade para pagamentos a faturar, com diversas opções conforme análise de cada caso."
+      question: "Qual prazo de faturamento, em caso de fechamento?",
+      answer: "Oferecemos flexibilidade no pagamento, conforme análise de cada caso."
     },
     {
-      question: "O que é coberto pelo seguro de cancelamento?",
-      answer: "O seguro cobre prejuízos causados por cancelamento, adiamento ou interrupção do evento, incluindo no-show de artistas, condições climáticas adversas, entre outros motivos cobertos pela apólice."
-    },
-    {
-      question: "Quem são os clientes típicos?",
+      question: "Quem pode contratar Seguro de RC Eventos?",
       answer: "Agências de eventos, marketing promocional e publicidade, organizadores, promotores, centros de convenções e exposições, patrocinadores e produtoras."
     },
     {
-      question: "Como funciona a cobertura de Responsabilidade Civil?",
-      answer: "A RC cobre danos materiais e corporais causados a terceiros durante o evento, desde sua concepção até a desmontagem, incluindo RC Equipamentos, Empregador, Restaurantes, Artistas e Danos Morais."
+      question: "Quais as principais cobertura de Responsabilidade Civil Eventos?",
+      answer: "O RC cobre danos materiais e corporais causados a terceiros durante o evento, desde sua concepção até a desmontagem, incluindo RD Equipamentos, RC Empregador, RC A&B, Danos Morais, Instalação e Montagem, RC Imóvel, e entre outras.."
     },
     {
       question: "A Ayfa oferece consultoria para grandes eventos?",
