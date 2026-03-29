@@ -14,23 +14,23 @@ const ContactForm = () => {
     name: "",
     email: "",
     phone: "",
-    eventType: "",
+    service: "",
     message: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = encodeURIComponent(`Solicitação de Cotação - ${formData.eventType}`);
+    const subject = encodeURIComponent(`Solicitação de Cotação - ${formData.service}`);
     const body = encodeURIComponent(
       `Nome: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
       `Telefone: ${formData.phone}\n` +
-      `Tipo de Evento: ${formData.eventType}\n\n` +
+      `Serviço: ${formData.service}\n\n` +
       `Mensagem:\n${formData.message}`
     );
     
-    window.location.href = `mailto:eventos@ayfa.com.br?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:atendimento@ayfa.com.br?subject=${subject}&body=${body}`;
     
     toast({
       title: "Formulário enviado!",
@@ -41,13 +41,13 @@ const ContactForm = () => {
       name: "",
       email: "",
       phone: "",
-      eventType: "",
+      service: "",
       message: ""
     });
   };
 
   return (
-    <section id="contato" className="py-16 md:py-24 lg:py-32 bg-muted relative overflow-hidden" ref={ref}>
+    <section id="contato" className="py-16 md:py-24 lg:py-32 bg-muted relative overflow-x-hidden" ref={ref}>
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-cyan rounded-full blur-3xl" style={{ opacity: 0.05 }} />
       <div className="absolute bottom-0 left-0 w-40 md:w-80 h-40 md:h-80 bg-purple rounded-full blur-3xl" style={{ opacity: 0.05 }} />
@@ -58,7 +58,7 @@ const ContactForm = () => {
             <span className="text-gradient">Solicite sua Cotação</span>
           </h2>
           <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-            Preencha o formulário e nossa equipe entrará em contato em até 6 horas
+            Preencha o formulário e nossa equipe entrará em contato o mais breve possível.
           </p>
         </div>
 
@@ -104,13 +104,20 @@ const ContactForm = () => {
                 </div>
                 
                 <div>
-                  <Input
-                    placeholder="Tipo de Evento *"
-                    value={formData.eventType}
-                    onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
+                  <select
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     required
-                    className="border-border bg-background h-12 md:h-14 text-sm md:text-base focus:border-primary focus:ring-primary"
-                  />
+                    className="w-full rounded-md border border-border bg-background h-12 md:h-14 px-3 text-sm md:text-base focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  >
+                    <option value="" disabled>Selecione um Serviço *</option>
+                    <option value="Seguro RC Eventos">Seguro RC Eventos</option>
+                    <option value="Corporativo">Corporativo</option>
+                    <option value="Pessoais">Pessoais</option>
+                    <option value="Responsabilidade Civil Eventos">Responsabilidade Civil Eventos</option>
+                    <option value="Riscos Diversos">Riscos Diversos</option>
+                    <option value="Acidentes Pessoais">Acidentes Pessoais</option>
+                  </select>
                 </div>
                 
                 <div>
@@ -146,12 +153,8 @@ const ContactForm = () => {
                   <div>
                     <h3 className="font-bold text-card-foreground mb-2 md:mb-4 text-lg md:text-xl">Email</h3>
                     <p className="text-muted-foreground mb-1 md:mb-2 text-sm md:text-base font-medium">Contato Geral:</p>
-                    <a href="mailto:eventos@ayfa.com.br" className="text-cyan hover:text-primary transition-colors text-base md:text-lg font-semibold">
-                      eventos@ayfa.com.br
-                    </a>
-                    <p className="text-muted-foreground mt-3 md:mt-4 mb-1 md:mb-2 text-sm md:text-base font-medium">Marcela Gorgone - Gerente:</p>
-                    <a href="mailto:marcela@ayfa.com.br" className="text-cyan hover:text-primary transition-colors text-base md:text-lg font-semibold">
-                      marcela@ayfa.com.br
+                    <a href="mailto:atendimento@ayfa.com.br" className="text-cyan hover:text-primary transition-colors text-base md:text-lg font-semibold">
+                      atendimento@ayfa.com.br
                     </a>
                   </div>
                 </div>
@@ -171,8 +174,8 @@ const ContactForm = () => {
                       (11) 3068-1200
                     </a>
                     <p className="text-muted-foreground text-sm md:text-base font-medium leading-relaxed">
-                      Segunda a Sexta<br />
-                      das 9h às 18h
+                      Atendimento de Segunda a Sexta<br />
+                      Das 9h as 18h
                     </p>
                   </div>
                 </div>
@@ -190,7 +193,7 @@ const ContactForm = () => {
                     <h3 className="font-bold text-card-foreground mb-2 md:mb-4 text-lg md:text-xl">Localização</h3>
                     <p className="text-muted-foreground text-sm md:text-base font-medium leading-relaxed">
                       São Paulo - SP<br />
-                      Atendimento em todo Brasil
+                      Atendimento em Todo Brasil
                     </p>
                   </div>
                 </div>

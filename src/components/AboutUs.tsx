@@ -1,4 +1,4 @@
-import { Target, Eye, Heart, Shield, Users, Award, CheckCircle, Calendar } from "lucide-react";
+import { Target, Eye, Heart, CheckCircle } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 // Import da imagem
@@ -31,17 +31,11 @@ const Reveal = ({ children, className = "", delay = 0 }: RevealProps) => {
 
 const AboutUs = () => {
   const values = [
-    { icon: Shield, title: "Confiança", description: "Relações transparentes" },
-    { icon: Users, title: "Compromisso", description: "Dedicação total" },
-    { icon: Award, title: "Excelência", description: "Qualidade superior" },
-    { icon: Heart, title: "Ética", description: "Integridade nas ações" },
-  ];
-
-  const stats = [
-    { icon: Calendar, value: "15+", label: "Anos de Experiência", color: "text-primary" },
-    { icon: Shield, value: "500+", label: "Eventos Segurados", color: "text-cyan" },
-    { icon: Users, value: "5k+", label: "Vidas Protegidas", color: "text-accent" },
-    { icon: CheckCircle, value: "99%", label: "Satisfação Clientes", color: "text-green-500" },
+    "Ética",
+    "Respeito",
+    "Profissionalismo",
+    "Comprometimento",
+    "Excelência",
   ];
 
   return (
@@ -86,11 +80,11 @@ const AboutUs = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-4">
                       <div className="h-px w-8 bg-cyan"></div>
-                      <span className="text-cyan font-bold tracking-widest text-xs uppercase">Sobre a Corretora</span>
+                      <span className="text-cyan font-bold tracking-widest text-xs uppercase">Sobre a Ayfa Seguros</span>
                     </div>
                     <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground drop-shadow-sm">
                       Mais que seguros,<br />
-                      <span className="text-gradient">Proteção para a vida.</span>
+                      <span className="text-gradient">Cuidado com o que importa.</span>
                     </h2>
                   </div>
                 </Reveal>
@@ -99,9 +93,7 @@ const AboutUs = () => {
                   {/* AJUSTE: Dark Mode agora usa dark:bg-black/30 (mais vidro) */}
                   <div className="relative p-6 -ml-2 rounded-2xl bg-white/60 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-sm transition-all hover:bg-white/70 dark:hover:bg-black/40">
                     <p className="text-muted-foreground text-lg leading-relaxed border-l-4 border-primary/50 pl-5">
-                      A <strong className="text-primary font-bold">AYFA Seguros</strong> combina tecnologia de ponta e atendimento humanizado. 
-                      Não vendemos apenas apólices; entregamos a certeza de que seu patrimônio, 
-                      sua família e seus negócios estão blindados contra qualquer imprevisto.
+                      A <strong className="text-primary font-bold">Ayfa Seguros</strong>, fundada em 1993, se destaca no mercado de consultoria de seguros pela eficiência, qualidade e ética exemplar. Sob a liderança de Fauze Farhat, com mais de 30 anos de experiência, a empresa é reconhecida por sua confiabilidade e pelo atendimento diferenciado. Além de oferecer uma ampla gama de produtos para atender diversas necessidades, a Ayfa Seguros é especialista em RC Eventos, garantindo proteção do patrimônio, tranquilidade e comodidade aos clientes em eventos de todos os portes.
                     </p>
                   </div>
                 </Reveal>
@@ -111,11 +103,11 @@ const AboutUs = () => {
                     {/* AJUSTE: Sombras coloridas sutis nos badges */}
                     <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm shadow-primary/5 hover:border-primary/30 transition-colors">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-sm font-semibold text-foreground">Atendimento Humanizado</span>
+                      <span className="text-sm font-semibold text-foreground">Desde 1993 com excelência</span>
                     </div>
                     <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm shadow-cyan/5 hover:border-cyan/30 transition-colors">
                       <CheckCircle className="w-4 h-4 text-cyan" />
-                      <span className="text-sm font-semibold text-foreground">Cobertura Nacional</span>
+                      <span className="text-sm font-semibold text-foreground">Especialista em RC Eventos</span>
                     </div>
                   </div>
                 </Reveal>
@@ -136,7 +128,7 @@ const AboutUs = () => {
                 </div>
                 <h3 className="font-bold text-xl mb-2 text-foreground">Missão</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Oferecer excelência e tranquilidade através de um atendimento transparente.
+                  Proporcionar soluções inovadoras, com um atendimento diferenciado e ágil, superando as expectativas e agregando valor aos negócios de nossos clientes.
                 </p>
               </div>
             </Reveal>
@@ -150,7 +142,7 @@ const AboutUs = () => {
                 </div>
                 <h3 className="font-bold text-xl mb-2 text-foreground">Visão</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ser referência nacional em inovação no mercado de seguros.
+                  Ser referência de mercado em qualidade de atendimento e estar entre as melhores consultorias no mercado de seguros.
                 </p>
               </div>
             </Reveal>
@@ -164,18 +156,17 @@ const AboutUs = () => {
                     <div className="p-1.5 bg-accent/10 rounded-lg">
                       <Heart className="w-5 h-5 text-accent fill-accent/20" /> 
                     </div>
-                    Nossos Valores
+                    Valores
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {values.map((value, index) => (
                       <div key={index} className="group/item">
                         <div className="flex flex-col items-center text-center gap-3">
-                          {/* Ícone com fundo bem leve */}
                           <div className="p-2.5 w-fit bg-white/40 dark:bg-white/5 rounded-xl shadow-sm border border-white/20 dark:border-white/5 group-hover/item:border-accent/50 group-hover/item:text-accent transition-all duration-300">
-                            <value.icon className="w-5 h-5" />
+                            <Heart className="w-5 h-5" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-sm text-foreground">{value.title}</h4>
+                            <h4 className="font-semibold text-sm text-foreground">{value}</h4>
                           </div>
                         </div>
                       </div>
@@ -186,28 +177,6 @@ const AboutUs = () => {
             </div>
 
           </div>
-        </div>
-
-        {/* RODAPÉ DE ESTATÍSTICAS */}
-        <div className="relative">
-          <Reveal delay={800}>
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-12 opacity-50" />
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="flex flex-col items-center text-center group cursor-default">
-                  {/* Ícones com fundo translúcido */}
-                  <div className={`p-4 rounded-2xl bg-white/40 dark:bg-white/5 backdrop-blur-sm border border-transparent group-hover:border-${stat.color.split('-')[1]}/20 mb-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white/60 dark:group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-${stat.color.split('-')[1]}/10`}>
-                    <stat.icon className={`w-8 h-8 ${stat.color} drop-shadow-sm`} />
-                  </div>
-                  <span className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-1">{stat.value}</span>
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest opacity-80">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
 
       </div>

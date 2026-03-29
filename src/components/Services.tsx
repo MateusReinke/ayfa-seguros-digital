@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { 
-  Shield, Users, Building, Briefcase, Calendar, Truck, HardHat, 
-  Scale, Monitor, Heart, Plane, Home, Stethoscope, PiggyBank, 
+  Users, Building, Briefcase, Calendar, Truck, 
+  Scale, Monitor, Heart, Plane, Home, Stethoscope,
   ArrowRight, Factory, MousePointerClick
 } from "lucide-react";
 
@@ -11,13 +12,48 @@ import bgImage from "@/assets/about-bg.jpg";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
+  const isMobile = useIsMobile();
   const [activeId, setActiveId] = useState<number>(1);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const services = [
     {
       id: 0,
-      title: "Para Você",
+      title: "Sua Empresa",
+      subtitle: "Corporativo",
+      description: "Gestão de risco inteligente para blindar seu patrimônio e operação.",
+      icon: Building,
+      color: "text-primary",
+      bgIcon: "bg-primary",
+      hoverBorder: "hover:border-primary",
+      shadow: "shadow-primary/20",
+      features: [
+        { icon: Truck, text: "Frotas" },
+        { icon: Monitor, text: "Cyber Risk" },
+        { icon: Scale, text: "Responsabilidade Civil Geral" },
+        { icon: Briefcase, text: "D&O e E&O" },
+        { icon: Factory, text: "Patrimonial" }
+      ]
+    },
+    {
+      id: 1,
+      title: "Seguro RC Eventos",
+      subtitle: "Entretenimento",
+      description: "Protege organizadores contra imprevistos como acidentes, danos materiais e responsabilidades legais, garantindo tranquilidade do início ao fim.",
+      icon: Calendar,
+      color: "text-accent",
+      bgIcon: "bg-accent",
+      hoverBorder: "hover:border-accent",
+      shadow: "shadow-accent/20",
+      features: [
+        { icon: Scale, text: "Resp. Civil Eventos" },
+        { icon: Monitor, text: "RD – Equipamentos" },
+        { icon: Users, text: "AP – Acidentes Pessoais" }
+      ]
+    },
+    {
+      id: 2,
+      title: "Pra Você",
       subtitle: "Pessoais",
       description: "Proteção completa para você e sua família viverem com tranquilidade.",
       icon: Users,
@@ -26,47 +62,10 @@ const Services = () => {
       hoverBorder: "hover:border-cyan", 
       shadow: "shadow-cyan/20",
       features: [
-        { icon: Heart, text: "Vida e Acidentes" },
-        { icon: Stethoscope, text: "Saúde e Odonto" },
-        { icon: Home, text: "Residencial" },
+        { icon: Heart, text: "Vida e Acidentes Pessoais" },
+        { icon: Stethoscope, text: "Saúde e Odont." },
         { icon: Plane, text: "Viagem" },
-        { icon: PiggyBank, text: "Previdência" }
-      ]
-    },
-    {
-      id: 1,
-      title: "Sua Empresa",
-      subtitle: "Corporativo",
-      description: "Gestão de riscos inteligente para blindar seu patrimônio e operação.",
-      icon: Building,
-      color: "text-primary",
-      bgIcon: "bg-primary",
-      hoverBorder: "hover:border-primary",
-      shadow: "shadow-primary/20",
-      features: [
-        { icon: Factory, text: "Patrimonial" },
-        { icon: Truck, text: "Frota e Cargas" },
-        { icon: Scale, text: "Resp. Civil" },
-        { icon: Monitor, text: "Cyber Risk" },
-        { icon: Briefcase, text: "D&O e E&O" }
-      ]
-    },
-    {
-      id: 2,
-      title: "Seus Eventos",
-      subtitle: "Entretenimento",
-      description: "Segurança líder de mercado, do planejamento à desmontagem.",
-      icon: Calendar,
-      color: "text-accent",
-      bgIcon: "bg-accent",
-      hoverBorder: "hover:border-accent",
-      shadow: "shadow-accent/20",
-      features: [
-        { icon: Calendar, text: "Cancelamento" },
-        { icon: Users, text: "Acidentes" },
-        { icon: Monitor, text: "Equipamentos" },
-        { icon: Scale, text: "Resp. Civil" },
-        { icon: HardHat, text: "Montagem" }
+        { icon: Home, text: "Residencial" }
       ]
     }
   ];
@@ -74,7 +73,7 @@ const Services = () => {
   return (
     <section 
       id="servicos" 
-      className="h-screen min-h-[700px] flex flex-col justify-center relative overflow-hidden bg-background" 
+      className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-background py-16 md:py-20" 
       ref={ref}
     >
       {/* 1. FUNDO GERAL */}
@@ -90,7 +89,7 @@ const Services = () => {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container px-4 md:px-6 relative z-10 h-full flex flex-col justify-center py-8">
+      <div className="container px-4 md:px-6 relative z-10 flex flex-col justify-center">
         
         {/* HEADER */}
         <div className={`text-center mb-8 shrink-0 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -103,18 +102,18 @@ const Services = () => {
         </div>
 
         {/* CONTAINER DOS CARDS */}
-        <div className={`flex flex-col lg:flex-row gap-4 w-full h-[60vh] max-h-[650px] min-h-[500px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className={`flex flex-col lg:flex-row gap-4 w-full lg:min-h-[520px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           
           {services.map((service) => {
-            const isActive = activeId === service.id;
+            const isActive = isMobile || activeId === service.id;
             const isHovered = hoveredId === service.id;
             
             return (
               <div
                 key={service.id}
-                onClick={() => setActiveId(service.id)}
-                onMouseEnter={() => setHoveredIndex(service.id)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => !isMobile && setActiveId(service.id)}
+                onMouseEnter={() => setHoveredId(service.id)}
+                onMouseLeave={() => setHoveredId(null)}
                 className={`
                   relative rounded-3xl border-2 cursor-pointer overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
                   flex flex-col group
@@ -123,6 +122,7 @@ const Services = () => {
                     : `lg:flex-[1] flex-[1] bg-white/30 dark:bg-card/20 backdrop-blur-md border-white/20 dark:border-white/5 ${service.hoverBorder}`
                   }
                   ${isHovered && !isActive ? 'lg:-translate-y-2 lg:bg-white/40' : ''}
+                  ${isActive ? 'min-h-[360px] lg:min-h-0' : 'min-h-[140px] lg:min-h-0'}
                 `}
               >
                 {/* Marca D'água */}
@@ -132,7 +132,7 @@ const Services = () => {
                 />
 
                 {/* --- CONTEÚDO DO CARD --- */}
-                <div className="absolute inset-0 p-6 md:p-8 flex flex-col h-full w-full">
+                <div className="relative p-6 md:p-8 flex flex-col h-full w-full">
                   
                   {/* 1. TOPO: Sempre visível (Ícone + Categoria) */}
                   <div className={`flex items-center gap-4 shrink-0 transition-all duration-500 ${isActive ? 'translate-x-0' : 'justify-center lg:justify-start'}`}>
