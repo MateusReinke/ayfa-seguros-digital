@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { 
   Shield, Users, Building, Briefcase, Calendar, Truck, HardHat, 
   Scale, Monitor, Heart, Plane, Home, Stethoscope, PiggyBank, 
-  ArrowRight, Factory, MousePointerClick
+  ArrowRight, Factory, MousePointerClick, Car
 } from "lucide-react";
 
 import bgImage from "@/assets/about-bg.jpg";
@@ -29,6 +29,7 @@ const Services = () => {
         { icon: Heart, text: "Vida e Acidentes" },
         { icon: Stethoscope, text: "Saúde e Odonto" },
         { icon: Home, text: "Residencial" },
+        { icon: Car, text: "Automóvel" },
         { icon: Plane, text: "Viagem" },
         { icon: PiggyBank, text: "Previdência" }
       ]
@@ -113,8 +114,8 @@ const Services = () => {
               <div
                 key={service.id}
                 onClick={() => setActiveId(service.id)}
-                onMouseEnter={() => setHoveredIndex(service.id)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                onMouseEnter={() => setHoveredId(service.id)}
+                onMouseLeave={() => setHoveredId(null)}
                 className={`
                   relative rounded-3xl border-2 cursor-pointer overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
                   flex flex-col group
