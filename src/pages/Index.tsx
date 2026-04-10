@@ -3,9 +3,7 @@ import Hero from "@/components/Hero";
 import AboutUs from "@/components/AboutUs";
 import Services from "@/components/Services";
 import Coverage from "@/components/Coverage";
-import Portfolio from "@/components/Portfolio"; // Principais Jobs (Letreiro/Marquee)
 import Clients from "@/components/Clients";     // Nossos Clientes (Grade de Logos)
-import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm"; // Certifique-se que o nome do arquivo é este ou "Contact"
 import Footer from "@/components/Footer";
@@ -19,9 +17,7 @@ const Index = () => {
       <AboutUs />
       <Services />
       <Coverage />
-      <Portfolio />
       <Clients />
-      <Testimonials />
       <FAQ />
       <ContactForm />
       <Footer />

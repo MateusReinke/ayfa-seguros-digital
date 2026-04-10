@@ -30,7 +30,6 @@ const Navigation = () => {
     { label: "Quem Somos", id: "quem-somos" },
     { label: "Serviços", id: "servicos" },
     { label: "Cobertura", id: "cobertura" },
-    { label: "Eventos", id: "portfolio" }, 
     { label: "Clientes", id: "clientes" }, 
     { label: "FAQ", id: "faq" },
     { label: "Contato", id: "contato" },
