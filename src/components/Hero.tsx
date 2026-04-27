@@ -70,7 +70,7 @@ const Hero = () => {
           <div className="mt-8 md:mt-16 animate-fade-in opacity-0" style={{animationDelay: '0.9s', animationFillMode: 'forwards'}}>
             <p className="text-foreground/80 font-medium text-xs md:text-base mb-3 md:mb-4 drop-shadow-sm">Seguros para:</p>
             <div className="flex flex-wrap justify-center gap-1.5 md:gap-3 px-1">
-              {['Pessoas', 'Empresas', 'Veículos', 'Patrimônio', 'Eventos'].map((client, idx) => (
+              {['Pessoas', 'Empresas', 'Veículos', 'Patrimônio'].map((client, idx) => (
                 <span key={idx} className="px-2.5 md:px-4 py-1 md:py-2 bg-white/50 dark:bg-foreground/5 backdrop-blur-md rounded-full text-foreground/90 font-medium text-xs md:text-sm border border-foreground/10 shadow-sm">
                   {client}
                 </span>
