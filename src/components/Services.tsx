@@ -8,7 +8,7 @@ import {
   ArrowRight, Factory, MousePointerClick
 } from "lucide-react";
 
-import bgImage from "@/assets/about-bg.jpg";
+import bgImage from "../assets/about-bg.jpg";
 
 const Services = () => {
   const { ref, isVisible } = useScrollReveal();
