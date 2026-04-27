@@ -37,16 +37,16 @@ const Services = () => {
     },
     {
       id: 1,
-      title: "Seguro RC Eventos",
-      subtitle: "Entretenimento",
-      description: "Protege organizadores contra imprevistos como acidentes, danos materiais e responsabilidades legais, garantindo tranquilidade do início ao fim.",
+      title: "Responsabilidade Civil",
+      subtitle: "Especializados",
+      description: "Proteção para operações e projetos especiais contra acidentes, danos materiais e responsabilidades legais, com suporte do início ao fim.",
       icon: Calendar,
       color: "text-accent",
       bgIcon: "bg-accent",
       hoverBorder: "hover:border-accent",
       shadow: "shadow-accent/20",
       features: [
-        { icon: Scale, text: "Resp. Civil Eventos" },
+        { icon: Scale, text: "Resp. Civil Geral" },
         { icon: Monitor, text: "RD – Equipamentos" },
         { icon: Users, text: "AP – Acidentes Pessoais" }
       ]
